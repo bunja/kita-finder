@@ -1,0 +1,49 @@
+html,
+body,
+main {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* background-color: red; */
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 835px;
+    margin: 0px auto;
+}
+
+.center-flex {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    height: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.logo-pic {
+    padding-right: 38px;
+}
+
+.welcome h1,
+.welcome h2 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: gray;
+    font-style: italic;
+}
+
+.error {
+    color: purple;
+    font-style: italic;
+}
