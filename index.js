@@ -47,7 +47,26 @@ app.post("/register/parent", function(req, res) {
                 hashPass
             )
                 .then(id => {
-                    req.session.userId = id;
+                    req.session.parentId = id;
+                    res.json({ success: true });
+                })
+                .catch(error => {
+                    console.log("err in db", error);
+                    res.json({ success: false });
+                });
+        })
+        .catch(err => console.log("err in bcrypt", err));
+});
+
+app.post("/register/kita", function(req, res) {
+    console.log("+++++ REGISTER KITA route +++++");
+    bcrypt
+        .hash(req.body.password)
+        .then(hashPass => {
+            console.log("bcrypt worked");
+            db.addKitas(req.body.kitaname, req.body.email, hashPass)
+                .then(id => {
+                    req.session.kitaId = id;
                     res.json({ success: true });
                 })
                 .catch(error => {
