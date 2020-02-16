@@ -12,8 +12,8 @@ exports.addParents = function(first, last, email, password) {
             [first, last, email, password]
         )
         .then(({ rows }) => {
-            console.log("id of a new inserted parent db.js", rows);
-            return rows;
+            console.log("id of a new inserted parent db.js", rows[0].id);
+            return rows[0].id;
         });
 };
 
@@ -24,8 +24,8 @@ exports.addKitas = function(kitaname, email, password) {
             [kitaname, email, password]
         )
         .then(({ rows }) => {
-            console.log("id of a new inserted kita db.js", rows);
-            return rows;
+            console.log("id of a new inserted kita db.js", rows[0].id);
+            return rows[0].id;
         });
 };
 
@@ -49,5 +49,14 @@ exports.returnHashedPassByEmailKita = function(email) {
         .then(pass => {
             console.log("hashed pass KITA returned by email db.js", pass.rows);
             return pass.rows[0];
+        });
+};
+
+exports.returnParentInfo = function(id) {
+    return db
+        .query(`SELECT * FROM parents WHERE id = $1`, [id])
+        .then(({ rows }) => {
+            console.log(" PARENT info returned by id db.js", rows[0]);
+            return rows[0];
         });
 };

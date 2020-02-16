@@ -66,7 +66,7 @@ app.post("/api/register/parent", function(req, res) {
         .catch(err => console.log("err in bcrypt", err));
 });
 
-app.post("api/register/kita", function(req, res) {
+app.post("/api/register/kita", function(req, res) {
     console.log("+++++ REGISTER KITA route +++++");
     bcrypt
         .hash(req.body.password)
@@ -85,7 +85,7 @@ app.post("api/register/kita", function(req, res) {
         .catch(err => console.log("err in bcrypt", err));
 });
 
-app.post("api/login/parent", (req, res) => {
+app.post("/api/login/parent", (req, res) => {
     db.returnHashedPassByEmailParent(req.body.email)
         .then(hashPass => {
             if (bcrypt.compare(req.body.password, hashPass.password)) {
@@ -102,7 +102,7 @@ app.post("api/login/parent", (req, res) => {
         });
 });
 
-app.post("api/login/kita", (req, res) => {
+app.post("/api/login/kita", (req, res) => {
     db.returnHashedPassByEmailKita(req.body.email)
         .then(hashPass => {
             if (bcrypt.compare(req.body.password, hashPass.password)) {
@@ -117,6 +117,14 @@ app.post("api/login/kita", (req, res) => {
             console.log(error);
             res.json({ success: false });
         });
+});
+
+app.get("/api/parent", function(req, res) {
+    console.log("parent id", req.session.parentId);
+    db.returnParentInfo(req.session.parentId).then(parent => {
+        console.log("Parent info index.js", parent);
+        res.json({ data: parent });
+    });
 });
 
 app.get("*", function(req, res) {

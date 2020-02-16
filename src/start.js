@@ -3,18 +3,18 @@ import ReactDOM from "react-dom";
 import Welcome from "./welcome";
 import App from "./app";
 ///////////////////Redux///////////////////
-//import { Provider } from "react-redux";
-// provider gives  an access to redux to every component
-// import { createStore, applyMiddleware } from "redux";
-// import reduxPromise from "redux-promise";
-// import { composeWithDevTools } from "redux-devtools-extension";
-//import reducer from "./reducers";
+import { Provider } from "react-redux";
+//provider gives  an access to redux to every component
+import { createStore, applyMiddleware } from "redux";
+import reduxPromise from "redux-promise";
+import { composeWithDevTools } from "redux-devtools-extension";
+import reducer from "./reducers";
 //import { init } from "./socket";
 
-// const store = createStore(
-//     reducer,
-//     composeWithDevTools(applyMiddleware(reduxPromise))
-// );
+const store = createStore(
+    reducer,
+    composeWithDevTools(applyMiddleware(reduxPromise))
+);
 //creating a store for global state and methods that allow us to interact us with store
 // /////////////////Redux///////////////
 console.log("hi!");
@@ -25,9 +25,9 @@ if (location.pathname.startsWith("/welcome")) {
 } else {
     //init(store);
     elem = (
-        //<Provider store={store}>
-        <App />
-        //</Provider>
+        <Provider store={store}>
+            <App />
+        </Provider>
     );
 }
 
