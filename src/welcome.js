@@ -1,5 +1,5 @@
 import React from "react";
-//import Registration from "./registration";
+import RegisterParent from "./registerParent";
 import { HashRouter, Route } from "react-router-dom";
 //import Login from "./login";
 //import ResetPassword from "./resetpassword";
@@ -13,7 +13,11 @@ export default function Welcome() {
                 </div>
                 <div className="welcome">
                     <h1>Kita-Finder</h1>
-                    <HashRouter></HashRouter>
+                    <HashRouter>
+                        <div>
+                            <Route exact path="/" component={RegisterParent} />
+                        </div>
+                    </HashRouter>
                 </div>
             </div>
         </div>

@@ -47,3 +47,11 @@ body {
     color: purple;
     font-style: italic;
 }
+.form-elements {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-element {
+    margin-bottom: 3px;
+}
