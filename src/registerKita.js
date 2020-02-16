@@ -5,7 +5,11 @@ import { useAuthSubmit } from "../hooks/useAuthSubmit";
 
 export default function RegisterKita() {
     const [values, handleChange] = useStatefulFields();
-    const [error, handleSubmit] = useAuthSubmit("/register/kita", values, "/");
+    const [error, handleSubmit] = useAuthSubmit(
+        "/api/register/kita",
+        values,
+        "/kita"
+    );
     return (
         <div>
             {error && <p> Something went wrong! Please try again</p>}
@@ -41,9 +45,7 @@ export default function RegisterKita() {
                     Sign up
                 </button>
             </div>
-            <Link to="/">log in</Link>
-            <br />
-            <Link to="/reset/start">reset password</Link>
+            <Link to="/welcome/login/kita">log in</Link>
         </div>
     );
 }

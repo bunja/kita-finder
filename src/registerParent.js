@@ -7,9 +7,9 @@ import { useAuthSubmit } from "../hooks/useAuthSubmit";
 export default function RegisterParent() {
     const [values, handleChange] = useStatefulFields();
     const [error, handleSubmit] = useAuthSubmit(
-        "/register/parent",
+        "/api/register/parent",
         values,
-        "/"
+        "/parent"
     );
     return (
         <div>
@@ -52,9 +52,7 @@ export default function RegisterParent() {
                     Sign up
                 </button>
             </div>
-            <Link to="/">log in</Link>
-            <br />
-            <Link to="/reset/start">reset password</Link>
+            <Link to="/welcome/login/parent">log in</Link>
         </div>
     );
 }

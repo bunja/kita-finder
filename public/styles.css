@@ -55,3 +55,30 @@ body {
 .form-element {
     margin-bottom: 3px;
 }
+
+.tab-container {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.tabs {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+
+    padding: 24px 32px;
+    border: 1px solid #f1f1f1;
+    background-color: #fff;
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.1);
+
+    margin: 80px 0;
+}
+
+.tab-list {
+    display: flex;
+    margin-left: 10px;
+    padding-bottom: 24px;
+}

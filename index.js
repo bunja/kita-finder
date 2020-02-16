@@ -4,6 +4,7 @@ const compression = require("compression");
 const db = require("./db");
 const cookieSession = require("cookie-session");
 const bcrypt = require("./bcrypt");
+const csurf = require("csurf");
 
 app.use(compression());
 app.use(express.json());
@@ -15,6 +16,13 @@ app.use(
         maxAge: 1000 * 60 * 60 * 24 * 14
     })
 );
+
+app.use(csurf());
+
+app.use(function(req, res, next) {
+    res.cookie("mytoken", req.csrfToken());
+    next();
+});
 if (process.env.NODE_ENV != "production") {
     app.use(
         "/bundle.js",
@@ -34,7 +42,7 @@ app.get("/welcome", function(req, res) {
     }
 });
 
-app.post("/register/parent", function(req, res) {
+app.post("/api/register/parent", function(req, res) {
     console.log("&&&& REGISTER PARENT route &&&&&");
     bcrypt
         .hash(req.body.password)
@@ -58,7 +66,7 @@ app.post("/register/parent", function(req, res) {
         .catch(err => console.log("err in bcrypt", err));
 });
 
-app.post("/register/kita", function(req, res) {
+app.post("api/register/kita", function(req, res) {
     console.log("+++++ REGISTER KITA route +++++");
     bcrypt
         .hash(req.body.password)
@@ -75,6 +83,40 @@ app.post("/register/kita", function(req, res) {
                 });
         })
         .catch(err => console.log("err in bcrypt", err));
+});
+
+app.post("api/login/parent", (req, res) => {
+    db.returnHashedPassByEmailParent(req.body.email)
+        .then(hashPass => {
+            if (bcrypt.compare(req.body.password, hashPass.password)) {
+                console.log("password is correct");
+                req.session.parentId = hashPass.id;
+                res.json({ success: true });
+            } else {
+                res.json({ success: false });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            res.json({ success: false });
+        });
+});
+
+app.post("api/login/kita", (req, res) => {
+    db.returnHashedPassByEmailKita(req.body.email)
+        .then(hashPass => {
+            if (bcrypt.compare(req.body.password, hashPass.password)) {
+                console.log("password is correct");
+                req.session.kitaId = hashPass.id;
+                res.json({ success: true });
+            } else {
+                res.json({ success: false });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            res.json({ success: false });
+        });
 });
 
 app.get("*", function(req, res) {

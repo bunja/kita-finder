@@ -1,7 +1,6 @@
 import React from "react";
-import RegisterParent from "./registerParent";
-import RegisterKita from "./registerKita";
-import { HashRouter, Route } from "react-router-dom";
+
+import RegisterTab from "./registerTab";
 //import Login from "./login";
 //import ResetPassword from "./resetpassword";
 
@@ -14,22 +13,23 @@ export default function Welcome() {
                 </div>
                 <div className="welcome">
                     <h1>Kita-Finder</h1>
-                    <HashRouter>
-                        <div>
-                            <Route
-                                exact
-                                path="/register/parent"
-                                component={RegisterParent}
-                            />
-                            <Route
-                                exact
-                                path="/register/kita"
-                                component={RegisterKita}
-                            />
-                        </div>
-                    </HashRouter>
+
+                    <RegisterTab />
                 </div>
             </div>
         </div>
     );
 }
+
+// <div>
+//     <Route
+//         exact
+//         path="/register/parent"
+//         component={RegisterParent}
+//     />
+//     <Route
+//         exact
+//         path="/register/kita"
+//         component={RegisterKita}
+//     />
+// </div>

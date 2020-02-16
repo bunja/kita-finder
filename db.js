@@ -28,3 +28,26 @@ exports.addKitas = function(kitaname, email, password) {
             return rows;
         });
 };
+
+exports.returnHashedPassByEmailParent = function(email) {
+    return db
+        .query(`SELECT password,id FROM parents WHERE email = $1`, [
+            email.trim()
+        ])
+        .then(pass => {
+            console.log(
+                "hashed pass PARENT returned by email db.js",
+                pass.rows
+            );
+            return pass.rows[0];
+        });
+};
+
+exports.returnHashedPassByEmailKita = function(email) {
+    return db
+        .query(`SELECT password,id FROM kitas WHERE email = $1`, [email.trim()])
+        .then(pass => {
+            console.log("hashed pass KITA returned by email db.js", pass.rows);
+            return pass.rows[0];
+        });
+};
