@@ -63,12 +63,63 @@ exports.returnParentInfo = function(id) {
 
 exports.returnKitaInfo = function(id) {
     return db
-        .query(
-            `SELECT id, kitaname, email, imageurl, description FROM kitas WHERE id = $1`,
-            [id]
-        )
+        .query(`SELECT * FROM kitas WHERE id = $1`, [id])
         .then(({ rows }) => {
             console.log(" Kita info returned by id db.js", rows[0]);
             return rows[0];
+        });
+};
+
+exports.updateKitaInfo = function(
+    id,
+    kitaname,
+    num_of_places,
+    time_of_work,
+    age,
+    street_hous,
+    zip_code,
+    city,
+    email,
+    web_site,
+    phone_number,
+    description
+) {
+    return db
+        .query(
+            `UPDATE kitas SET kitaname=$2,
+                             RETURNING *`,
+            [
+                id,
+                kitaname,
+                num_of_places,
+                time_of_work,
+                age,
+                street_hous,
+                zip_code,
+                city,
+                email,
+                web_site,
+                phone_number,
+                description
+            ]
+        )
+        .then(({ rows }) => {
+            console.log("smth was updated db.js", rows);
+        });
+};
+
+exports.getMatchingKitas = function(val) {
+    console.log("val", val);
+    return db
+        .query(
+            `SELECT id, kitaname,email,time_of_work,street_hous,
+            zip_code,imageurl, num_of_places FROM kitas WHERE zip_code ILIKE $1`,
+            [val + "%"]
+        )
+        .then(({ rows }) => {
+            console.log("__________________________");
+            console.log("rows whatever db.js", rows);
+            console.log("__________________________");
+            return rows;
         });
 };

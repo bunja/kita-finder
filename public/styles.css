@@ -85,6 +85,7 @@ body {
 
 .navbar {
     margin-top: 10px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -105,4 +106,58 @@ body {
 
 .nav-link {
     margin-right: 5px;
+}
+
+.user {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-info {
+    width: 100%;
+}
+
+.user-userpic-container {
+    margin-right: 10px;
+}
+
+.user-name {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.container-kita {
+    display: flex;
+    border: 2px dotted gray;
+}
+
+.kita-side {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+    border: 2px dotted gray;
+}
+.main-info {
+    display: flex;
+    flex-direction: row;
+    border: 2px dotted gray;
+}
+.pic {
+    flex-grow: 1;
+    border: 2px dotted gray;
+}
+.main-info {
+    flex-grow: 2;
+    border: 2px dotted gray;
+}
+.contact-side {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border: 2px dotted gray;
+}
+
+.kita-apply {
+    border: 2px dotted gray;
 }

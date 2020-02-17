@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <div className="container kita">
+            <div className="kita-side">
+                <div className="kita main-info">
+                    <div className="pic">
+                        <img src="/logo.png" />
+                    </div>
+                    <div className="kita-info">
+                        <h1>{kita.kitaname}</h1>
+                        <p>{kita.num_of_places}</p>
+                        <p>{kita.time_of_work}</p>
+                        <p>{kita.age}</p>
+                    </div>
+                </div>
+                <div className="desc kita">
+                    <p>{kita.description}</p>
+                </div>
+                <div className="kita apply"></div>
+            </div>
+            <div className="contact-side">
+                <p>{kita.zip_code}{kita.city}</p>
+                <p>{kita.phone_number}</p>
+                <p>{kita.email}</p>
+                <p>{kita.web_site}</p>
+                <p>{kita.address}</p>
+            </div>
+        </div>
+    </body>
+</html>

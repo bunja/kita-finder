@@ -1,0 +1,24 @@
+.container-kita {
+    display: flex;
+}
+
+.kita-side {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+}
+.main-info {
+    display: flex;
+    flex-direction: row;
+}
+.pic {
+    flex-grow: 1;
+}
+.main-info {
+    flex-grow: 2;
+}
+.contact-side {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import Parent from "./parent";
 import Kita from "./kita";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//     receiveFriendsWannabes,
-//     acceptFriendRequest,
-//     unfriend
-// } from "./actions";
+import FindKita from "./findKita";
 
 export default function App() {
     return (
@@ -31,6 +26,7 @@ export default function App() {
 
                 <Route exact path="/parent" component={Parent} />
                 <Route exact path="/kita" component={Kita} />
+                <Route exact path="/find/kita" component={FindKita} />
             </BrowserRouter>
         </div>
     );

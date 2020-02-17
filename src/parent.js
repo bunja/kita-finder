@@ -15,7 +15,7 @@ export default function Parent() {
         dispatch(receiveParentInfo());
     }, []);
     if (!parent) {
-        return <div>HUI TEBE</div>;
+        return <div>NOTHING</div>;
     }
     return (
         <div className="user">
@@ -25,10 +25,13 @@ export default function Parent() {
                 </div>
             </div>
             <div className="user-info">
-                <h3 className="user-name">
-                    {parent.first} {parent.last}
-                </h3>
-                <div className="email">{parent.email}&nbsp;</div>
+                <p className="user-name">
+                    First name:{parent.first}
+                    <br />
+                    Last name: {parent.last}
+                    <br />
+                    Email:&nbsp;{parent.email}
+                </p>
             </div>
         </div>
     );
