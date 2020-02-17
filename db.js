@@ -60,3 +60,15 @@ exports.returnParentInfo = function(id) {
             return rows[0];
         });
 };
+
+exports.returnKitaInfo = function(id) {
+    return db
+        .query(
+            `SELECT id, kitaname, email, imageurl, description FROM kitas WHERE id = $1`,
+            [id]
+        )
+        .then(({ rows }) => {
+            console.log(" Kita info returned by id db.js", rows[0]);
+            return rows[0];
+        });
+};

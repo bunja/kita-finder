@@ -82,3 +82,27 @@ body {
     margin-left: 10px;
     padding-bottom: 24px;
 }
+
+.navbar {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-header {
+    font-size: 25px;
+}
+
+.nav-separator {
+    flex-grow: 1;
+}
+
+.nav-links {
+    margin-right: 8px;
+}
+
+.nav-link {
+    margin-right: 5px;
+}

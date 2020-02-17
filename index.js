@@ -127,6 +127,14 @@ app.get("/api/parent", function(req, res) {
     });
 });
 
+app.get("/api/kita", function(req, res) {
+    console.log("parent id", req.session.parentId);
+    db.returnParentInfo(req.session.kitaId).then(kita => {
+        console.log("Parent info index.js", kita);
+        res.json({ data: kita });
+    });
+});
+
 app.get("*", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
