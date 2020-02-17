@@ -161,3 +161,30 @@ body {
 .kita-apply {
     border: 2px dotted gray;
 }
+.kitainfo-container {
+    width: 820px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid gray;
+}
+.pic {
+    width: 100px;
+    height: 100px;
+    flex-grow: 1;
+    border: 2px solid gray;
+}
+
+.kita-contact {
+    flex-grow: 4;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid gray;
+}
+
+.kita-apply-to {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid gray;
+}

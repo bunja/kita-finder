@@ -22,3 +22,27 @@
     display: flex;
     flex-direction: column;
 }
+
+.kitainfo-container {
+    width: 820px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+}
+.pic {
+    width: 100px;
+    height: 100px;
+    flex-grow: 1;
+}
+
+.kita-contact {
+    flex-grow: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.kita-apply-to {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+}
