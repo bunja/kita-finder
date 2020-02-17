@@ -126,3 +126,12 @@ exports.getMatchingKitas = function(val) {
             return rows;
         });
 };
+
+exports.getApplication = function(parent_id) {
+    return db
+        .query(`SELECT * FROM applications WHERE parent_id=$1`, [parent_id])
+        .then(({ rows }) => {
+            console.log("applications insides", rows[0]);
+            return rows[0];
+        });
+};
