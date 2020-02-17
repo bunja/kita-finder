@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
-    receiveKitaInfo
-    //     acceptFriendRequest,
+    receiveKitaInfo,
+    updateKitaInfo
     //     unfriend
 } from "./actions";
 import { useStatefulFields } from "../hooks/useStatefulFields";
@@ -88,7 +88,7 @@ export default function Kita() {
                                 <h1>
                                     <input
                                         name="kitaname"
-                                        value={values.kitaname}
+                                        defaultValue={kita.kitaname}
                                         onChange={e => handleChange(e)}
                                     />
                                 </h1>
@@ -96,7 +96,7 @@ export default function Kita() {
                                     Number of places:
                                     <input
                                         name="num_of_places"
-                                        value={values.num_of_places}
+                                        defaultValue={kita.num_of_places}
                                         onChange={e => handleChange(e)}
                                     />
                                 </p>
@@ -104,7 +104,7 @@ export default function Kita() {
                                     Time of work:
                                     <input
                                         name="time_of_work"
-                                        value={values.time_of_work}
+                                        defaultValue={kita.time_of_work}
                                         onChange={e => handleChange(e)}
                                     />
                                 </p>
@@ -112,7 +112,7 @@ export default function Kita() {
                                     Age of kids:
                                     <input
                                         name="age"
-                                        value={values.age}
+                                        defaultValue={kita.age}
                                         onChange={e => handleChange(e)}
                                     />
                                 </p>
@@ -123,7 +123,7 @@ export default function Kita() {
                                 Some info:
                                 <input
                                     name="description"
-                                    value={values.description}
+                                    defaultValue={kita.description}
                                     onChange={e => handleChange(e)}
                                 />
                             </p>
@@ -140,21 +140,21 @@ export default function Kita() {
                             Zip:
                             <input
                                 name="zip_code"
-                                value={values.zip_code}
+                                defaultValue={kita.zip_code}
                                 onChange={e => handleChange(e)}
                             />
                             City:
                             <input
                                 name="city"
-                                value={values.city}
+                                defaultValue={kita.city}
                                 onChange={e => handleChange(e)}
                             />
                         </p>
                         <p>
                             Phone:
                             <input
-                                name="phone"
-                                value={values.phone_number}
+                                name="phone_number"
+                                defaultValue={kita.phone_number}
                                 onChange={e => handleChange(e)}
                             />
                         </p>
@@ -162,15 +162,15 @@ export default function Kita() {
                             email:
                             <input
                                 name="email"
-                                value={values.email}
+                                defaultValue={kita.email}
                                 onChange={e => handleChange(e)}
                             />
                         </p>
                         <p>
                             web-site:
                             <input
-                                name="phone"
-                                value={values.web_site}
+                                name="web_site"
+                                defaultValue={kita.web_site}
                                 onChange={e => handleChange(e)}
                             />
                         </p>
@@ -181,6 +181,7 @@ export default function Kita() {
                             onClick={e => {
                                 handleSave();
                                 setEditMode(false);
+                                dispatch(updateKitaInfo(values));
                             }}
                         >
                             Save

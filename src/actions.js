@@ -19,3 +19,12 @@ export async function receiveKitaInfo() {
         kita: data
     };
 }
+
+export async function updateKitaInfo(data) {
+    //console.log("data from /api/kita", data);
+    console.log("updateKitaInfo action is in action", data);
+    return {
+        type: "UPDATE_KITA_INFO",
+        kita: data
+    };
+}
