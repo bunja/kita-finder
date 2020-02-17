@@ -70,41 +70,44 @@ exports.returnKitaInfo = function(id) {
         });
 };
 
-exports.updateKitaInfo = function(
-    id,
-    kitaname,
-    num_of_places,
-    time_of_work,
-    age,
-    street_hous,
-    zip_code,
-    city,
-    email,
-    web_site,
-    phone_number,
-    description
-) {
+exports.updateKitaInfo = function(id, info) {
+    const kitaname = info.kitaname || "";
+    const num_of_places = info.num_of_places || 0;
+    const time_of_work = info.time_of_work || "";
+    const age = info.age || "";
+    const street_hous = info.street_hous || "";
+    const zip_code = info.zip_code || "";
+    const city = info.city || "";
+    const email = info.email || "";
+    const web_site = info.web_site || "";
+    const phone_number = info.phone_number || "";
+    const description = info.description || "";
+
+    const query = `
+        UPDATE kitas
+        SET kitaname=$2, num_of_places=$3,time_of_work=$4,
+        age=$5,street_hous=$6,zip_code=$7,city=$8,
+        email=$9,web_site=$10,phone_number=$11,description=$12
+        WHERE id=$1
+    `;
+
     return db
-        .query(
-            `UPDATE kitas SET kitaname=$2,
-                             RETURNING *`,
-            [
-                id,
-                kitaname,
-                num_of_places,
-                time_of_work,
-                age,
-                street_hous,
-                zip_code,
-                city,
-                email,
-                web_site,
-                phone_number,
-                description
-            ]
-        )
-        .then(({ rows }) => {
-            console.log("smth was updated db.js", rows);
+        .query(query, [
+            id,
+            kitaname,
+            num_of_places,
+            time_of_work,
+            age,
+            street_hous,
+            zip_code,
+            city,
+            email,
+            web_site,
+            phone_number,
+            description
+        ])
+        .then(res => {
+            console.log("smth was updated db.js", res);
         });
 };
 

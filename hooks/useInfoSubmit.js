@@ -19,6 +19,8 @@ export function useInfoSubmit(url, values, replUrl) {
             .then(({ data }) => {
                 if (!data.success) {
                     setError(true);
+                } else {
+                    // а тут чо?
                 }
             })
             .catch(err => {

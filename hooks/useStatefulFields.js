@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export function useStatefulFields() {
-    const [values, setValues] = useState([]);
+    const [values, setValues] = useState({});
 
     const handleChange = e => {
         setValues({

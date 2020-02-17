@@ -136,24 +136,17 @@ app.get("/api/kita", function(req, res) {
 });
 
 app.post("/api/update/kita", (req, res) => {
-    db.updateKitaInfo(
-        req.session.kitaId,
-        req.body.kitaname,
-        req.body.num_of_places,
-        req.body.time_of_work,
-        req.body.age,
-        req.body.street_hous,
-        req.body.zip_code,
-        req.body.city,
-        req.body.email,
-        req.body.web_site,
-        req.body.phone_number,
-        req.body.description
-    )
+    console.log("/api/update/kita", req.body);
+
+    const kitaId = req.session.kitaId;
+    const kitaInfo = req.body;
+
+    db.updateKitaInfo(kitaId, kitaInfo)
         .then(() => {
             res.json({ success: true });
         })
         .catch(err => {
+            console.error("/api/update/kita", err);
             res.json({
                 success: false
             });
@@ -161,10 +154,17 @@ app.post("/api/update/kita", (req, res) => {
 });
 
 app.post("/api/find/kita", function(req, res) {
-    db.getMatchihgKitas(req.body.val).then(rows => {
-        console.log("rows====> /search", rows);
-        res.json({ rows: rows });
-    });
+    db.getMatchingKitas(req.body.val)
+        .then(rows => {
+            console.log("rows====> /search", rows);
+            res.json({ rows: rows });
+        })
+        .catch(err => {
+            console.error("/api/find/kita", err);
+            res.json({
+                success: false
+            });
+        });
 });
 
 app.get("/logout", (req, res) => {
