@@ -4,7 +4,7 @@ import Application from "./application";
 
 export default function KitaInfo(props) {
     return (
-        <div className="kitainfo-container">
+        <div className="application-container">
             <div className="pic">
                 <img className="pic-kita" src="./logo.png" />
             </div>

@@ -78,7 +78,7 @@ export default function Kita() {
             )}
 
             {editMode && (
-                <div className="container-kita">
+                <div className="container-application">
                     <div className="kita-side">
                         <div className="kita main-info">
                             <div className="pic">

@@ -21,9 +21,11 @@ export default function Application() {
     useEffect(() => {
         dispatch(receiveApplication());
     }, []);
+
     if (!application) {
         return <div>TYPIK</div>;
     }
+
     return (
         <div className="container-application">
             <div className="application" action="" method="post">
@@ -33,6 +35,7 @@ export default function Application() {
                     <input
                         placeholder="Child's first name"
                         defaultValue={application.kidfirst}
+                        onChange={e => handleChange(e)}
                         name="kidfirst"
                         type="text"
                         tabIndex="1"
@@ -44,6 +47,7 @@ export default function Application() {
                     <input
                         placeholder="Child's last name"
                         defaultValue={application.kidlast}
+                        onChange={e => handleChange(e)}
                         name="kidlast"
                         type="text"
                         tabIndex="2"
@@ -54,6 +58,7 @@ export default function Application() {
                     <input
                         placeholder="Date of birth"
                         defaultValue={application.birthdate}
+                        onChange={e => handleChange(e)}
                         name="birthdate"
                         type="text"
                         tabIndex="3"
@@ -64,6 +69,7 @@ export default function Application() {
                     <input
                         placeholder="Gutschein number"
                         defaultValue={application.gutschein}
+                        onChange={e => handleChange(e)}
                         name="gutschein"
                         type="text"
                         tabIndex="4"
@@ -74,6 +80,7 @@ export default function Application() {
                     <input
                         placeholder="Valid until "
                         defaultValue={application.valid_until}
+                        onChange={e => handleChange(e)}
                         name="valid_until"
                         type="text"
                         tabIndex="5"
@@ -84,6 +91,7 @@ export default function Application() {
                     <input
                         placeholder="Parent's first name"
                         defaultValue={application.first}
+                        onChange={e => handleChange(e)}
                         name="first"
                         type="text"
                         tabIndex="6"
@@ -94,6 +102,7 @@ export default function Application() {
                     <input
                         placeholder="Parent's last name"
                         defaultValue={application.last}
+                        onChange={e => handleChange(e)}
                         name="last"
                         type="text"
                         tabIndex="7"
@@ -104,6 +113,7 @@ export default function Application() {
                     <input
                         placeholder="Your Email Address"
                         defaultValue={application.email}
+                        onChange={e => handleChange(e)}
                         name="email"
                         type="email"
                         tabIndex="6"
@@ -114,6 +124,7 @@ export default function Application() {
                     <input
                         placeholder="Your Phone Number"
                         defaultValue={application.phone_number}
+                        onChange={e => handleChange(e)}
                         name="email"
                         type="tel"
                         tabIndex="7"
@@ -124,6 +135,7 @@ export default function Application() {
                     <input
                         placeholder="Street, house number"
                         defaultValue={application.street_hous}
+                        onChange={e => handleChange(e)}
                         name="street_hous"
                         type="text"
                         tabIndex="8"
@@ -134,6 +146,7 @@ export default function Application() {
                     <input
                         placeholder="Zip code"
                         defaultValue={application.zip_code}
+                        onChange={e => handleChange(e)}
                         name="zip_code"
                         type="text"
                         tabIndex="9"
@@ -144,6 +157,7 @@ export default function Application() {
                     <input
                         placeholder="City"
                         defaultValue={application.city}
+                        onChange={e => handleChange(e)}
                         name="city"
                         type="text"
                         tabIndex="10"
@@ -154,6 +168,7 @@ export default function Application() {
                     <textarea
                         placeholder="Type your message here...."
                         defaultValue={application.notes}
+                        onChange={e => handleChange(e)}
                         name="notes"
                         tabIndex="11"
                         required
@@ -165,7 +180,8 @@ export default function Application() {
                         type="submit"
                         className="contact-submit"
                         onClick={e => {
-                            handleSave();
+                            const newValues = { ...application, ...values };
+                            handleSave(newValues);
 
                             dispatch(updateApplication(values));
                         }}

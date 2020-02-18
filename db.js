@@ -150,6 +150,8 @@ exports.getApplication = function(parent_id) {
 
 // upserting user_profiles
 exports.upsertApplication = function(parent_id, applInfo) {
+    console.log("upsertApplication", applInfo);
+
     const kidfirst = applInfo.kidfirst || "";
     const kidlast = applInfo.kidlast || "";
     const birthdate = applInfo.birthdate || "00010101";
@@ -166,7 +168,7 @@ exports.upsertApplication = function(parent_id, applInfo) {
                     (parent_id, kidfirst, kidlast, birthdate,
                     gutschein, valid_until, street_hous, zip_code,
                     city, phone_number, notes)
-                    VALUES ($1, $2, $3, $4, $5, $6,$7,$8,$9,$10,$11)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7,$8,$9,$10,$11)
                     ON CONFLICT (parent_id)
                     DO UPDATE
                     SET

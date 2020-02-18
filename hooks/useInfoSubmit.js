@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "../src/axios";
 
-export function useInfoSubmit(url, values, replUrl) {
+export function useInfoSubmit(url, values) {
     const [error, setError] = useState();
 
     const val = Object.values(values);

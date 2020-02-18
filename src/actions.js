@@ -40,7 +40,7 @@ export async function receiveApplication() {
 
 export async function updateApplication(data) {
     //const { data } = await axios.get("/api/update/application");
-    console.log("data from /api/update/application", data);
+    console.log("A*C*T*O*N data from /api/update/application", data);
     return {
         type: "UPDATE_APPLICATION",
         application: data
