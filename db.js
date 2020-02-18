@@ -126,10 +126,22 @@ exports.getMatchingKitas = function(val) {
             return rows;
         });
 };
-
+// берет инфо для заявления только из таблицы аппликейшн
+// exports.getApplication = function(parent_id) {
+//     return db
+//         .query(`SELECT * FROM applications WHERE parent_id=$1`, [parent_id])
+//         .then(({ rows }) => {
+//             console.log("applications insides", rows[0]);
+//             return rows[0];
+//         });
+// };
+// getting the whole information
 exports.getApplication = function(parent_id) {
     return db
-        .query(`SELECT * FROM applications WHERE parent_id=$1`, [parent_id])
+        .query(
+            `select applications.*,parents.first, parents.last, parents.email from applications left join parents on applications.parent_id=parents.id where parent_id=$1`,
+            [parent_id]
+        )
         .then(({ rows }) => {
             console.log("applications insides", rows[0]);
             return rows[0];
