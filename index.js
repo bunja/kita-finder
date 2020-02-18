@@ -169,7 +169,7 @@ app.post("/api/find/kita", function(req, res) {
 
 app.get("/api/application", function(req, res) {
     console.log("parent id", req.session.parentId);
-    db.returnKitaInfo(req.session.parentId).then(application => {
+    db.getApplication(req.session.parentId).then(application => {
         console.log("application index.js", application);
         res.json({ data: application });
     });

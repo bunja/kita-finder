@@ -21,7 +21,7 @@ export default function FindKita() {
         axios.post("/api/find/kita", { val: val }).then(({ data }) => {
             if (!ignore) {
                 setKitas(data.rows);
-                console.log("matching kitas inside then", users);
+                console.log("matching kitas inside then", kitas);
             }
         });
 

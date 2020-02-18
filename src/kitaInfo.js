@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, BrouserRouter } from "react-router-dom";
+import { Link, Route, BrowserRouter } from "react-router-dom";
 import Application from "./application";
 
 export default function KitaInfo(props) {
@@ -26,7 +26,6 @@ export default function KitaInfo(props) {
                 <p>Available</p>
                 <div className="appl-btn">
                     <Link to="/application">Apply</Link>
-                    <Route exact path="/application" component={Application} />
                 </div>
             </div>
         </div>

@@ -31,9 +31,9 @@ export async function updateKitaInfo(data) {
 
 export async function receiveApplication() {
     const { data } = await axios.get("/api/application");
-    console.log("data from /api/application", data.application);
+    console.log("data from /api/application", data);
     return {
         type: "RECEIVE_APPLICATION",
-        application: data.application
+        application: data
     };
 }

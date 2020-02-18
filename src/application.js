@@ -15,9 +15,12 @@ export default function Application() {
     useEffect(() => {
         dispatch(receiveApplication());
     }, []);
+    if (!application) {
+        return <div>TYPIK</div>;
+    }
     return (
         <div className="application">
-            <p>{application.kidfirst}</p>
+            I AM SO STUPID<p>{application.kidfirst}</p>
             <p>{application.kidlast}</p>
             <p>{application.birthdate}</p>
             <p>{application.gutschein}</p>

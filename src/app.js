@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import Parent from "./parent";
 import Kita from "./kita";
 import FindKita from "./findKita";
+import Application from "./application";
 
 export default function App() {
     return (
@@ -27,6 +28,7 @@ export default function App() {
                 <Route exact path="/parent" component={Parent} />
                 <Route exact path="/kita" component={Kita} />
                 <Route exact path="/find/kita" component={FindKita} />
+                <Route exact path="/application" component={Application} />
             </BrowserRouter>
         </div>
     );

@@ -19,7 +19,7 @@ export default function reducer(state = {}, action) {
 
     if (action.type == "RECEIVE_APPLICATION") {
         console.log("REDUCE TO ASHES APPLICATION", action);
-        newState = { ...state, kita: action.application.data };
+        newState = { ...state, application: action.application.data };
     }
 
     return newState;
