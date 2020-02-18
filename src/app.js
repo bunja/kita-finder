@@ -28,7 +28,7 @@ export default function App() {
                 <Route exact path="/parent" component={Parent} />
                 <Route exact path="/kita" component={Kita} />
                 <Route exact path="/find/kita" component={FindKita} />
-                <Route exact path="/application" component={Application} />
+                <Route exact path="/application/:id" component={Application} />
             </BrowserRouter>
         </div>
     );

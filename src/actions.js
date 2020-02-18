@@ -29,12 +29,13 @@ export async function updateKitaInfo(data) {
     };
 }
 
-export async function receiveApplication() {
-    const { data } = await axios.get("/api/application");
+export async function receiveApplication(id) {
+    const { data } = await axios.get("/api/application/" + id);
     console.log("data from /api/application", data);
     return {
         type: "RECEIVE_APPLICATION",
-        application: data
+        application: data.data,
+        kita: data.contact
     };
 }
 

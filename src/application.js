@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from "react";
 
+import { useParams } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { receiveApplication, updateApplication } from "./actions";
 import { useStatefulFields } from "../hooks/useStatefulFields";
-import { useInfoSubmit } from "../hooks/useInfoSubmit";
+import { useUpdate } from "../hooks/useUpdate";
 
 export default function Application() {
+    const { id } = useParams();
+    console.log("Application", id);
+
     const dispatch = useDispatch();
     const application = useSelector(state => state && state.application);
-    console.log("applicationComponent", application);
+    const kita = useSelector(state => state && state.kita);
+    console.log("applicationComponent", application, kita);
 
     const [values, handleChange] = useStatefulFields();
     console.log("application values", values);
 
-    const [error, handleSave] = useInfoSubmit(
+    const [error, handleSave] = useUpdate(
         "/api/update/application",
+        application,
         values
     );
 
     useEffect(() => {
-        dispatch(receiveApplication());
+        dispatch(receiveApplication(id));
     }, []);
 
     if (!application) {
@@ -29,7 +36,7 @@ export default function Application() {
     return (
         <div className="container-application">
             <div className="application" action="" method="post">
-                <h3>Kita Application Form</h3>
+                <h3>Application for {kita.kitaname}</h3>
 
                 <fieldset>
                     <input
@@ -125,7 +132,7 @@ export default function Application() {
                         placeholder="Your Phone Number"
                         defaultValue={application.phone_number}
                         onChange={e => handleChange(e)}
-                        name="email"
+                        name="phone_number"
                         type="tel"
                         tabIndex="7"
                         required
@@ -180,13 +187,11 @@ export default function Application() {
                         type="submit"
                         className="contact-submit"
                         onClick={e => {
-                            const newValues = { ...application, ...values };
-                            handleSave(newValues);
-
+                            handleSave();
                             dispatch(updateApplication(values));
                         }}
                     >
-                        Send Application
+                        Send Application to {kita.kitaname}
                     </button>
                 </fieldset>
             </div>

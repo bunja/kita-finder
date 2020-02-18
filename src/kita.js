@@ -7,7 +7,7 @@ import {
     //     unfriend
 } from "./actions";
 import { useStatefulFields } from "../hooks/useStatefulFields";
-import { useInfoSubmit } from "../hooks/useInfoSubmit";
+import { useUpdate } from "../hooks/useUpdate";
 
 export default function Kita() {
     const [editMode, setEditMode] = useState(false);
@@ -19,7 +19,7 @@ export default function Kita() {
     const [values, handleChange] = useStatefulFields();
     console.log("kita values", values);
 
-    const [error, handleSave] = useInfoSubmit("/api/update/kita", values);
+    const [error, handleSave] = useUpdate("/api/update/kita", kita, values);
 
     useEffect(() => {
         dispatch(receiveKitaInfo());
@@ -36,7 +36,7 @@ export default function Kita() {
     return (
         <div>
             {!editMode && (
-                <div className="container-kita">
+                <div className="container-form">
                     <div className="kita-side">
                         <div className="kita main-info">
                             <div className="pic">
@@ -78,7 +78,7 @@ export default function Kita() {
             )}
 
             {editMode && (
-                <div className="container-application">
+                <div className="container-form">
                     <div className="kita-side">
                         <div className="kita main-info">
                             <div className="pic">

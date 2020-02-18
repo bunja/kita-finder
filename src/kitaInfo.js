@@ -9,7 +9,7 @@ export default function KitaInfo(props) {
                 <img className="pic-kita" src="./logo.png" />
             </div>
             <div className="kita-contact">
-                <Link to={`/user/${props.id}`} className="nav-link">
+                <Link to={`/kita/${props.id}`} className="nav-link">
                     <p>{props.kitaname}</p>
                 </Link>
 
@@ -25,7 +25,7 @@ export default function KitaInfo(props) {
                 <p>Places{props.places}</p>
                 <p>Available</p>
                 <div className="appl-btn">
-                    <Link to="/application">Apply</Link>
+                    <Link to={"/application/" + props.id}>Apply</Link>
                 </div>
             </div>
         </div>

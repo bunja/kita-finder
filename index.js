@@ -167,11 +167,17 @@ app.post("/api/find/kita", function(req, res) {
         });
 });
 
-app.get("/api/application", function(req, res) {
+app.get("/api/application/:id", function(req, res) {
     console.log("parent id", req.session.parentId);
+    console.log("kita id req.params", req.params.id);
     db.getApplication(req.session.parentId).then(application => {
         console.log("application index.js", application);
-        res.json({ data: application });
+        if (!application) {
+            application = {};
+        }
+        db.returnKitaInfo(req.params.id).then(kitaContactInfo => {
+            res.json({ data: application, contact: kitaContactInfo });
+        });
     });
 });
 
