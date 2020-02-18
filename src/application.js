@@ -20,7 +20,7 @@ export default function Application() {
     console.log("application values", values);
 
     const [error, handleSave] = useUpdate(
-        "/api/update/application",
+        `/api/application/${id}`,
         application,
         values
     );

@@ -5,7 +5,7 @@ const db = require("./db");
 const cookieSession = require("cookie-session");
 const bcrypt = require("./bcrypt");
 const csurf = require("csurf");
-
+const ses = require("./ses");
 app.use(compression());
 app.use(express.json());
 app.use(express.static("./public"));
@@ -181,15 +181,21 @@ app.get("/api/application/:id", function(req, res) {
     });
 });
 
-app.post("/api/update/application", (req, res) => {
-    console.log("/api/update/application hwy no ", req.body);
+app.post("/api/application/:id", (req, res) => {
+    console.log("/api/application hwy no ", req.body);
 
     const parentId = req.session.parentId;
     const applicationInfo = req.body;
 
     db.upsertApplication(parentId, applicationInfo)
         .then(() => {
-            res.json({ success: true });
+            db.returnKitaInfo(req.params.id).then(kitaContactInfo => {
+                // send email
+                const email = kitaContactInfo.email;
+                const message = JSON.stringify(applicationInfo);
+                ses.sendEmail(email, message, "Application");
+                res.json({ success: true });
+            });
         })
         .catch(err => {
             console.error("/api/update/application", err);
