@@ -19,15 +19,138 @@ export default function Application() {
         return <div>TYPIK</div>;
     }
     return (
-        <div className="application">
-            I AM SO STUPID<p>{application.kidfirst}</p>
-            <p>{application.kidlast}</p>
-            <p>{application.birthdate}</p>
-            <p>{application.gutschein}</p>
-            <p>{application.valid_until}</p>
-            <p>{application.street_hous}</p>
-            <p>{application.zip_code}</p>
-            <p>{application.city}</p>
+        <div className="container-application">
+            <div className="application" action="" method="post">
+                <h3>Kita Application Form</h3>
+
+                <fieldset>
+                    <input
+                        placeholder="Child's first name"
+                        defaultValue={application.kidfirst}
+                        type="text"
+                        tabIndex="1"
+                        required
+                        autoFocus
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Child's last name"
+                        defaultValue={application.kidlast}
+                        type="text"
+                        tabIndex="2"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Date of birth"
+                        defaultValue={application.birthdate}
+                        type="text"
+                        tabIndex="3"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Gutschein number"
+                        defaultValue={application.gutschein}
+                        type="text"
+                        tabIndex="4"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Valid until "
+                        defaultValue={application.valid_until}
+                        type="text"
+                        tabIndex="5"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Parent's first name"
+                        defaultValue={application.first}
+                        type="text"
+                        tabIndex="6"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Parent's last name"
+                        defaultValue={application.last}
+                        type="text"
+                        tabIndex="7"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Your Email Address"
+                        defaultValue={application.email}
+                        type="email"
+                        tabIndex="6"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Your Phone Number"
+                        defaultValue={application.phone_number}
+                        type="tel"
+                        tabIndex="7"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Street, house number"
+                        defaultValue={application.street_hous}
+                        type="text"
+                        tabIndex="8"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="Zip code"
+                        defaultValue={application.zip_code}
+                        type="text"
+                        tabIndex="9"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <input
+                        placeholder="City"
+                        defaultValue={application.city}
+                        type="text"
+                        tabIndex="10"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <textarea
+                        placeholder="Type your message here...."
+                        defaultValue={application.notes}
+                        tabIndex="11"
+                        required
+                    ></textarea>
+                </fieldset>
+                <fieldset>
+                    <button
+                        name="submit"
+                        type="submit"
+                        id="contact-submit"
+                        data-submit="...Sending"
+                    >
+                        Submit
+                    </button>
+                </fieldset>
+            </div>
         </div>
     );
 }

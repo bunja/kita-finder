@@ -2,57 +2,168 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="./kita.css" />
         <title></title>
     </head>
-    <body>
-        <div className="container kita">
-            <div className="kita-side">
-                <div className="kita main-info">
-                    <div className="pic">
-                        <img src="/logo.png" />
-                    </div>
-                    <div className="kita-info">
-                        <h1>{kita.kitaname}</h1>
-                        <p>{kita.num_of_places}</p>
-                        <p>{kita.time_of_work}</p>
-                        <p>{kita.age}</p>
-                    </div>
-                </div>
-                <div className="desc kita">
-                    <p>{kita.description}</p>
-                </div>
-                <div className="kita apply"></div>
-            </div>
-            <div className="contact-side">
-                <p>{kita.zip_code}{kita.city}</p>
-                <p>{kita.phone_number}</p>
-                <p>{kita.email}</p>
-                <p>{kita.web_site}</p>
-                <p>{kita.address}</p>
-            </div>
-        </div>
-
-
-        <div className="kitainfo-container">
-            <div className="pic">
-                <img className="pic-kita" src='./logo.png'/>
-            </div>
-            <div className="kita-contact">
-                <p>Name</p>
-                <p>Email</p>
-                <p>Address</p>
-                <p>Openning Hours</p>
-            </div>
-            <div className="kita-apply">
-                <p>Places</p>
-                <p>Available</p>
-                <div className="appl-btn">
-                    <a href="#" onClick={e => this.addClick()}>
-                        Apply
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </body>
+    <body></body>
 </html>
+
+<div className="container-application">
+    <div className="application" action="" method="post">
+        <h3>Kita Application Form</h3>
+
+        <fieldset>
+            <input
+                placeholder="Child's first name"
+                type="text"
+                tabindex="1"
+                required
+                autofocus
+            />
+        </fieldset>
+        <fieldset>
+            <input
+                placeholder="Child's last name"
+                type="text"
+                tabindex="2"
+                required
+            />
+        </fieldset>
+        <fieldset>
+            <input
+                placeholder="Date of birth"
+                type="text"
+                tabindex="3"
+                required
+            />
+        </fieldset>
+        <fieldset>
+            <input
+                placeholder="Gutschein number"
+                type="text"
+                tabindex="4"
+                required
+            />
+        </fieldset>
+        <fieldset>
+            <input
+                placeholder="Valid until "
+                type="text"
+                tabindex="5"
+                required
+            />
+        </fieldset>
+        <fieldset>
+            <input
+                placeholder="Parent's first name"
+                type="text"
+                tabindex="6"
+                required
+            />
+        </fieldset>
+        <fieldset>
+            <input
+                placeholder="Parent's last name"
+                type="text"
+                tabindex="7"
+                required
+            />
+        </fieldset>
+        <fieldset>
+            <input
+                placeholder="Your Email Address"
+                type="email"
+                tabindex="6"
+                required
+            />
+        </fieldset>
+        <fieldset>
+            <input
+                placeholder="Your Phone Number (optional)"
+                type="tel"
+                tabindex="7"
+                required
+            />
+        </fieldset>
+        <fieldset>
+            <input
+                placeholder="Street, house number"
+                type="text"
+                tabindex="8"
+                required
+            />
+        </fieldset>
+        <fieldset>
+            <input placeholder="Zip code" type="text" tabindex="9" required />
+        </fieldset>
+        <fieldset>
+            <input placeholder="City" type="text" tabindex="10" required />
+        </fieldset>
+        <fieldset>
+            <textarea
+                placeholder="Type your message here...."
+                tabindex="5"
+                required
+            ></textarea>
+        </fieldset>
+        <fieldset>
+            <button
+                name="submit"
+                type="submit"
+                id="contact-submit"
+                data-submit="...Sending"
+            >
+                Submit
+            </button>
+        </fieldset>
+    </div>
+
+    <!-- <div className="container kita">
+    <div className="kita-side">
+        <div className="kita main-info">
+            <div className="pic">
+                <img src="/logo.png" />
+            </div>
+            <div className="kita-info">
+                <h1>{kita.kitaname}</h1>
+                <p>{kita.num_of_places}</p>
+                <p>{kita.time_of_work}</p>
+                <p>{kita.age}</p>
+            </div>
+        </div>
+        <div className="desc kita">
+            <p>{kita.description}</p>
+        </div>
+        <div className="kita apply"></div>
+    </div>
+    <div className="contact-side">
+        <p>{kita.zip_code}{kita.city}</p>
+        <p>{kita.phone_number}</p>
+        <p>{kita.email}</p>
+        <p>{kita.web_site}</p>
+        <p>{kita.address}</p>
+    </div>
+</div> -->
+
+    <!-- <div className="kitainfo-container">
+    <div className="pic">
+        <img className="pic-kita" src='./logo.png'/>
+    </div>
+    <div className="kita-contact">
+        <p>Name</p>
+        <p>Email</p>
+        <p>Address</p>
+        <p>Openning Hours</p>
+    </div>
+    <div className="kita-apply">
+        <p>Places</p>
+        <p>Available</p>
+        <div className="appl-btn">
+            <a href="#" onClick={e => this.addClick()}>
+                Apply
+            </a>
+        </div>
+    </div>
+
+</div> -->
+</div>
