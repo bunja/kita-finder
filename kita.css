@@ -17,10 +17,10 @@ body {
     font-size: 12px;
     line-height: 30px;
     color: #777;
-    background: #4caf50;
+    /* background: #4caf50; */
 }
 
-.container {
+.container-application {
     max-width: 400px;
     width: 100%;
     margin: 0 auto;

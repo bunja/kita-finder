@@ -175,6 +175,24 @@ app.get("/api/application", function(req, res) {
     });
 });
 
+app.post("/api/update/application", (req, res) => {
+    console.log("/api/update/application hwy no ", req.body);
+
+    const parentId = req.session.parentId;
+    const applicationInfo = req.body;
+
+    db.upsertApplication(parentId, applicationInfo)
+        .then(() => {
+            res.json({ success: true });
+        })
+        .catch(err => {
+            console.error("/api/update/application", err);
+            res.json({
+                success: false
+            });
+        });
+});
+
 app.get("/logout", (req, res) => {
     req.session = null;
     res.redirect("/welcome");

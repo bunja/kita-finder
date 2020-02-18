@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import {
-    receiveApplication
-    //updateApplication
-} from "./actions";
+import { receiveApplication, updateApplication } from "./actions";
 import { useStatefulFields } from "../hooks/useStatefulFields";
 import { useInfoSubmit } from "../hooks/useInfoSubmit";
 
@@ -12,6 +9,15 @@ export default function Application() {
     const dispatch = useDispatch();
     const application = useSelector(state => state && state.application);
     console.log("applicationComponent", application);
+
+    const [values, handleChange] = useStatefulFields();
+    console.log("application values", values);
+
+    const [error, handleSave] = useInfoSubmit(
+        "/api/update/application",
+        values
+    );
+
     useEffect(() => {
         dispatch(receiveApplication());
     }, []);
@@ -27,6 +33,7 @@ export default function Application() {
                     <input
                         placeholder="Child's first name"
                         defaultValue={application.kidfirst}
+                        name="kidfirst"
                         type="text"
                         tabIndex="1"
                         required
@@ -37,6 +44,7 @@ export default function Application() {
                     <input
                         placeholder="Child's last name"
                         defaultValue={application.kidlast}
+                        name="kidlast"
                         type="text"
                         tabIndex="2"
                         required
@@ -46,6 +54,7 @@ export default function Application() {
                     <input
                         placeholder="Date of birth"
                         defaultValue={application.birthdate}
+                        name="birthdate"
                         type="text"
                         tabIndex="3"
                         required
@@ -55,6 +64,7 @@ export default function Application() {
                     <input
                         placeholder="Gutschein number"
                         defaultValue={application.gutschein}
+                        name="gutschein"
                         type="text"
                         tabIndex="4"
                         required
@@ -64,6 +74,7 @@ export default function Application() {
                     <input
                         placeholder="Valid until "
                         defaultValue={application.valid_until}
+                        name="valid_until"
                         type="text"
                         tabIndex="5"
                         required
@@ -73,6 +84,7 @@ export default function Application() {
                     <input
                         placeholder="Parent's first name"
                         defaultValue={application.first}
+                        name="first"
                         type="text"
                         tabIndex="6"
                         required
@@ -82,6 +94,7 @@ export default function Application() {
                     <input
                         placeholder="Parent's last name"
                         defaultValue={application.last}
+                        name="last"
                         type="text"
                         tabIndex="7"
                         required
@@ -91,6 +104,7 @@ export default function Application() {
                     <input
                         placeholder="Your Email Address"
                         defaultValue={application.email}
+                        name="email"
                         type="email"
                         tabIndex="6"
                         required
@@ -100,6 +114,7 @@ export default function Application() {
                     <input
                         placeholder="Your Phone Number"
                         defaultValue={application.phone_number}
+                        name="email"
                         type="tel"
                         tabIndex="7"
                         required
@@ -109,6 +124,7 @@ export default function Application() {
                     <input
                         placeholder="Street, house number"
                         defaultValue={application.street_hous}
+                        name="street_hous"
                         type="text"
                         tabIndex="8"
                         required
@@ -118,6 +134,7 @@ export default function Application() {
                     <input
                         placeholder="Zip code"
                         defaultValue={application.zip_code}
+                        name="zip_code"
                         type="text"
                         tabIndex="9"
                         required
@@ -127,6 +144,7 @@ export default function Application() {
                     <input
                         placeholder="City"
                         defaultValue={application.city}
+                        name="city"
                         type="text"
                         tabIndex="10"
                         required
@@ -136,6 +154,7 @@ export default function Application() {
                     <textarea
                         placeholder="Type your message here...."
                         defaultValue={application.notes}
+                        name="notes"
                         tabIndex="11"
                         required
                     ></textarea>
@@ -144,10 +163,14 @@ export default function Application() {
                     <button
                         name="submit"
                         type="submit"
-                        id="contact-submit"
-                        data-submit="...Sending"
+                        className="contact-submit"
+                        onClick={e => {
+                            handleSave();
+
+                            dispatch(updateApplication(values));
+                        }}
                     >
-                        Submit
+                        Send Application
                     </button>
                 </fieldset>
             </div>

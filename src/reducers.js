@@ -22,5 +22,14 @@ export default function reducer(state = {}, action) {
         newState = { ...state, application: action.application.data };
     }
 
+    if (action.type == "UPDATE_APPLICATION") {
+        console.log("UPDATE TO ASHES APPLICATION", action);
+        newState = {
+            ...state,
+            application: { ...state.application, ...action.application }
+        };
+        console.log("newState", newState);
+    }
+
     return newState;
 }

@@ -147,3 +147,51 @@ exports.getApplication = function(parent_id) {
             return rows[0];
         });
 };
+
+// upserting user_profiles
+exports.upsertApplication = function(parent_id, applInfo) {
+    const kidfirst = applInfo.kidfirst || "";
+    const kidlast = applInfo.kidlast || "";
+    const birthdate = applInfo.birthdate || "00010101";
+    const gutschein = applInfo.gutschein || "";
+    const valid_until = applInfo.valid_until || "00010101";
+    const street_hous = applInfo.street_hous || "";
+    const zip_code = applInfo.zip_code || "";
+    const city = applInfo.city || "";
+    console.log("city", city);
+    const phone_number = applInfo.phone_number || "";
+    const notes = applInfo.notes || "";
+
+    const query = `INSERT INTO applications
+                    (parent_id, kidfirst, kidlast, birthdate,
+                    gutschein, valid_until, street_hous, zip_code,
+                    city, phone_number, notes)
+                    VALUES ($1, $2, $3, $4, $5, $6,$7,$8,$9,$10,$11)
+                    ON CONFLICT (parent_id)
+                    DO UPDATE
+                    SET
+                    kidfirst=$2, kidlast=$3,
+                    birthdate=$4,
+                    gutschein=$5,valid_until=$6,street_hous=$7,zip_code=$8,
+                    city=$9,phone_number=$10,notes=$11`;
+
+    return db
+        .query(query, [
+            parent_id,
+            kidfirst,
+            kidlast,
+            birthdate,
+            gutschein,
+            valid_until,
+            street_hous,
+            zip_code,
+            city,
+            phone_number,
+            notes
+        ])
+        .then(() => {
+            console.log(
+                "upserting into applications, I hope you will work, please"
+            );
+        });
+};
