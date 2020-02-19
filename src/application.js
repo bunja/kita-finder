@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { receiveApplication, updateApplication } from "./actions";
 import { useStatefulFields } from "../hooks/useStatefulFields";
 import { useUpdate } from "../hooks/useUpdate";
+import Modal from "./modal";
 
-export default function Application() {
+export default function Application(props) {
     const { id } = useParams();
     console.log("Application", id);
 
@@ -24,6 +25,8 @@ export default function Application() {
         application,
         values
     );
+
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         dispatch(receiveApplication(id));
@@ -189,10 +192,20 @@ export default function Application() {
                         onClick={e => {
                             handleSave();
                             dispatch(updateApplication(values));
+                            setIsVisible(true);
+                            console.log("AAAA?");
                         }}
                     >
                         Send Application to {kita.kitaname}
                     </button>
+                    {isVisible && (
+                        <Modal
+                            closeModal={() => {
+                                setIsVisible(false);
+                                props.history.push("/find/kita");
+                            }}
+                        />
+                    )}
                 </fieldset>
             </div>
         </div>
