@@ -9,8 +9,8 @@ main {
 }
 
 * {
-    /* font-family: Arial, Helvetica, sans-serif; */
-    font-family: "Open Sans Condensed", sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: "Open Sans Condensed", sans-serif; */
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     font-weight: 100;
     font-size: 12px;
     line-height: 30px;
-    color: #777;
+    /* color: #777; */
 }
 
 span {
@@ -287,8 +287,13 @@ fieldset {
     border-radius: 3px;
     max-width: 500px;
     padding: 2rem;
+    font-size: 1.5em;
+    font-weight: 250;
 }
-
+.modal-pic {
+    width: 50px;
+    height: 50px;
+}
 .modal-header {
     display: flex;
     justify-content: flex-end;
@@ -349,13 +354,16 @@ body {
     /* overflow-y: auto; */
     display: flex;
     flex-direction: column;
-    transition: 0.5s 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+    /* transition: 0.5s 0.3s cubic-bezier(0.55, 0, 0.1, 1); */
+}
+.content > p {
+    margin: 0.25em !important;
 }
 
 .active .content {
     transform: scale(0.2);
     opacity: 0;
-    transition: 0.2s 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+    /* transition: 0.2s 0.3s cubic-bezier(0.55, 0, 0.1, 1); */
 }
 
 .post {
@@ -366,7 +374,7 @@ body {
     background: #eceff1;
     border-radius: 3px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 0.2s ease-in-out;
+    /* transition: all 0.2s ease-in-out; */
 }
 
 /* .post:hover {
@@ -390,11 +398,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: blue;
+    /* color: blue; */
 }
 
 .main > .preview {
-    width: 33%;
+    width: 30%;
     height: 100%;
     background: azure;
     display: flex;
@@ -410,16 +418,18 @@ body {
     flex-direction: column;
     text-align: left;
     font-size: 1.15em;
-    font-family: "Open Sans Condensed", sans-serif;
+    /* font-family: "Open Sans Condensed", sans-serif; */
 }
 
 .main-info > div {
     margin: 2px 2px 2px 25px;
-    font-family: "Open Sans Condensed", sans-serif;
+    /* font-family: "Open Sans Condensed", sans-serif; */
     /* color: dimgray; */
 }
 
-.name {
+.kitaname {
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .sec {
@@ -435,8 +445,11 @@ body {
 
 .sec > div {
     margin: 10px 25px;
-    font-family: "Open Sans Condensed", sans-serif;
+    /* font-family: "Open Sans Condensed", sans-serif; */
     /* color: dimgray; */
+}
+.sec > p {
+    margin: 0.25em !important;
 }
 textarea {
     height: auto;
@@ -461,7 +474,7 @@ textarea {
 
 .ter > div {
     margin: 10px 25px;
-    font-family: "Open Sans Condensed", sans-serif;
+    /* font-family: "Open Sans Condensed", sans-serif; */
     font-size: 1.17em;
 }
 /* kitainfo */
@@ -488,4 +501,17 @@ textarea {
 .application {
     min-width: 25%;
     flex-grow: 1;
+}
+.website {
+    height: 1.16em;
+}
+
+.address > p {
+    font-weight: 300;
+    font-size: 1.2em;
+}
+
+.title {
+    font-weight: 550;
+    font-size: 1.3em;
 }

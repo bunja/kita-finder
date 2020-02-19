@@ -50,15 +50,13 @@ export default function Kita() {
                                         </p>
                                     </div>
                                     <div className="address">
-                                        Address:
-                                        <p>
-                                            Zip:{kita.zip_code}
-                                            <br />
-                                            City:{kita.city}
-                                            <br />
-                                            Street:{kita.street_hous}
-                                            <br />
-                                        </p>
+                                        <span className="title">Address:</span>
+                                        <br /> Zip: {kita.zip_code}
+                                        <br />
+                                        City: {kita.city}
+                                        <br />
+                                        Street: {kita.street_hous}
+                                        <br />
                                     </div>
                                     <div className="contact-info">
                                         <p>
@@ -88,10 +86,10 @@ export default function Kita() {
                             <div className=" ter">
                                 <div className="application">Aplication:</div>
                                 <div className="places">
-                                    Places:{kita.num_of_places}
+                                    Places: {kita.num_of_places}
                                 </div>
                                 <div className="available">
-                                    Available:{kita.available}
+                                    Available: {kita.available}
                                 </div>
                                 <div className="kita-edit ">
                                     <a href="#" onClick={e => editClick()}>
@@ -122,8 +120,9 @@ export default function Kita() {
                                     </p>
                                 </div>
                                 <div className="address">
-                                    Address:
                                     <p>
+                                        <span className="title">Address:</span>
+                                        <br />
                                         Zip:
                                         <input
                                             name="zip_code"

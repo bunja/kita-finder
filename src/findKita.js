@@ -2,10 +2,14 @@ import axios from "./axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import KitaInfo from "./kitaInfo";
+import useStateWithLocalStorage from "../hooks/useStateWithLocalStorage";
 
 export default function FindKita() {
-    const [val, setVal] = useState("");
+    const [val, setVal] = useStateWithLocalStorage("myValueInLocalStorage");
+
+    // const [val, setVal] = useState("");
     const [kitas, setKitas] = useState([]);
+    // const [value, setValue] = useStateWithLocalStorage("myValueInLocalStorage");
 
     const onChange = ({ target }) => {
         setVal(target.value);
@@ -37,7 +41,7 @@ export default function FindKita() {
             <div>{kitas.available}</div>
             <div className="form-element mb-10">
                 <p>Enter zip code:</p>
-                <input onChange={onChange} defaultValue={history} />
+                <input onChange={onChange} defaultValue={val} />
             </div>
             <div>
                 {kitas.map(kita => {

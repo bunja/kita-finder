@@ -31,6 +31,7 @@ export default function KitaInfo(props) {
                     </div>
                 </div>
                 <div className="some-info">
+                    Information:
                     <div className="time-of-work">Open: {kita.time}</div>
                     <div className="age"> Age of kids: {kita.age}</div>
                     <div className="website"> www.zandec.com</div>

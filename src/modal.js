@@ -15,7 +15,11 @@ export default function Modal(props) {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <p>Your application was sent successfully!!🚀</p>
+                    <p>
+                        <img className="modal-pic" src="/rocket.png" />
+                        <br />
+                        Your application has been sent successfully!!
+                    </p>
                 </div>
             </div>
         </div>
