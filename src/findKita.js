@@ -46,6 +46,7 @@ export default function FindKita() {
                             <KitaInfo
                                 id={kita.id}
                                 kita={kita.kitaname}
+                                phone={kita.phone_number}
                                 email={kita.email}
                                 zip={kita.zip_code}
                                 street={kita.street_hous}

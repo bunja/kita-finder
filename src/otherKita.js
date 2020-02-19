@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 export default function Kita() {
     const dispatch = useDispatch();
-    const kita = useSelector(state => state && state.kita);
+    const kita = useSelector(state => state && state.otherkita);
     console.log("kita kitaComponent", kita);
     const { id } = useParams();
     console.log("id KOKKKKKK", id);
@@ -19,36 +19,54 @@ export default function Kita() {
     }
 
     return (
-        <div className="container-form">
-            <div className="kita-side">
-                <div className="kita main-info">
-                    <div className="pic">
-                        <img src="/logo.png" />
+        <div className="kita-profile">
+            <div className="content">
+                <div className="post main">
+                    <div className="preview">
+                        <img className="kita-pic" src="./public/logo.png" />
                     </div>
-                    <div className="kita-info">
-                        <h1>Name:{kita.kitaname}</h1>
-                        <p>Number of places:{kita.num_of_places}</p>
-                        <p>Time of work:{kita.time_of_work}</p>
-                        <p>Age of kids:{kita.age}</p>
+                    <div className="main-info">
+                        <div className="name">
+                            <p className="kitaname">{kita.kitaname}</p>
+                        </div>
+                        <div className="address">
+                            Address:
+                            <p>
+                                Zip:{kita.zip_code}
+                                <br />
+                                City:{kita.city}
+                                <br />
+                                Street:{kita.street_hous}
+                                <br />
+                            </p>
+                        </div>
+                        <div className="contact-info">
+                            <p>
+                                Phone: {kita.phone_number}
+                                <br />
+                                email: {kita.email}
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div className="desc kita">
-                    <p>Some info:{kita.description}</p>
+                <div className="post sec">
+                    <div className="desc">
+                        Some information:
+                        <p>{kita.description}</p>
+                    </div>
+                    <div className="time-of-work">
+                        {" "}
+                        Open: {kita.time_of_work}{" "}
+                    </div>
+                    <div className="age"> Age of kids: {kita.age}</div>
+                    <div className="website"> www.zandec.com</div>
                 </div>
-                <div className="kita-apply">
-                    Places available: {kita.available}
+
+                <div className="post ter">
+                    <div className="application">Aplication:</div>
+                    <div className="places">Places:{kita.num_of_places}</div>
+                    <div className="available">Available:{kita.available}</div>
                 </div>
-            </div>
-            <div className="contact-side">
-                <h1>ADDRESS:</h1>
-                <p>
-                    Zip:{kita.zip_code}
-                    City:{kita.city}
-                    Street:{kita.street_hous}
-                </p>
-                <p>Phone:{kita.phone_number}</p>
-                <p>email:{kita.email}</p>
-                <p>web-site:{kita.web_site}</p>
             </div>
         </div>
     );
