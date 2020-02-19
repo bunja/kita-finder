@@ -9,6 +9,7 @@ export default function Kita() {
     const kita = useSelector(state => state && state.kita);
     console.log("kita kitaComponent", kita);
     const { id } = useParams();
+    console.log("id KOKKKKKK", id);
     useEffect(() => {
         dispatch(receiveOtherKitaInfo(id));
     }, []);
