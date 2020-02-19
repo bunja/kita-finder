@@ -23,6 +23,7 @@ CREATE TABLE kitas(
 
 ALTER TABLE users ADD imageurl VARCHAR(300);
 ALTER TABLE users ADD bio TEXT;
+ALTER TABLE kitas ADD available INT;
 
 
 

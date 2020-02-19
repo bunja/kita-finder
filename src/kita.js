@@ -53,9 +53,7 @@ export default function Kita() {
                             <p>Some info:{kita.description}</p>
                         </div>
                         <div className="kita-apply">
-                            LOGIC LOGIC LOGIC <br />
-                            Some smart important
-                            <br /> logic is missing here
+                            Places available: {kita.available}
                         </div>
                     </div>
                     <div className="contact-side">
@@ -129,9 +127,12 @@ export default function Kita() {
                             </p>
                         </div>
                         <div className="kita-apply">
-                            LOGIC LOGIC LOGIC <br />
-                            Some smart important
-                            <br /> logic is missing here
+                            Places available:
+                            <input
+                                name="available"
+                                defaultValue={kita.available}
+                                onChange={e => handleChange(e)}
+                            />
                         </div>
                     </div>
                     <div className="contact-side">

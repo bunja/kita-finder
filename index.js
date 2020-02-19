@@ -186,10 +186,13 @@ app.post("/api/application/:id", (req, res) => {
 
     const parentId = req.session.parentId;
     const applicationInfo = req.body;
+    const kitaId = req.params.id;
 
     db.upsertApplication(parentId, applicationInfo)
         .then(() => {
-            db.returnKitaInfo(req.params.id).then(kitaContactInfo => {
+            db.decrementAvailableCount(kitaId);
+
+            db.returnKitaInfo(kitaId).then(kitaContactInfo => {
                 // send email
                 const email = kitaContactInfo.email;
                 const message = JSON.stringify(applicationInfo);

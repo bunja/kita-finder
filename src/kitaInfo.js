@@ -23,7 +23,7 @@ export default function KitaInfo(props) {
             </div>
             <div className="kita-apply-to">
                 <p>Places{props.places}</p>
-                <p>Available</p>
+                <p>Available{props.available}</p>
                 <div className="appl-btn">
                     <Link to={"/application/" + props.id}>Apply</Link>
                 </div>

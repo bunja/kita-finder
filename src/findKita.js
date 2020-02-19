@@ -30,8 +30,11 @@ export default function FindKita() {
         };
     }, [val]);
 
+    console.log("KiTaS", kitas);
+
     return (
         <div>
+            <div>{kitas.available}</div>
             <div className="form-element mb-10">
                 <p>Enter zip_code</p>
                 <input onChange={onChange} />
@@ -48,6 +51,7 @@ export default function FindKita() {
                                 street={kita.street_hous}
                                 time={kita.time_of_work}
                                 places={kita.num_of_places}
+                                available={kita.available}
                             />
                         </div>
                     );

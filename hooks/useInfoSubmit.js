@@ -4,15 +4,6 @@ import axios from "../src/axios";
 export function useInfoSubmit(url, values) {
     const [error, setError] = useState();
 
-    const val = Object.values(values);
-    console.log("Values of input fields", val);
-    for (const value of val) {
-        if (!value) {
-            setError(true);
-            return;
-        }
-    }
-
     const handleSave = () => {
         axios
             .post(url, values)

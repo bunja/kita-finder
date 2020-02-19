@@ -82,12 +82,13 @@ exports.updateKitaInfo = function(id, info) {
     const web_site = info.web_site || "";
     const phone_number = info.phone_number || "";
     const description = info.description || "";
+    const available = info.available || 0;
 
     const query = `
         UPDATE kitas
         SET kitaname=$2, num_of_places=$3,time_of_work=$4,
         age=$5,street_hous=$6,zip_code=$7,city=$8,
-        email=$9,web_site=$10,phone_number=$11,description=$12
+        email=$9,web_site=$10,phone_number=$11,description=$12, available=$13
         WHERE id=$1
     `;
 
@@ -104,7 +105,8 @@ exports.updateKitaInfo = function(id, info) {
             email,
             web_site,
             phone_number,
-            description
+            description,
+            available
         ])
         .then(res => {
             console.log("smth was updated db.js", res);
@@ -116,7 +118,7 @@ exports.getMatchingKitas = function(val) {
     return db
         .query(
             `SELECT id, kitaname,email,time_of_work,street_hous,
-            zip_code,imageurl, num_of_places FROM kitas WHERE zip_code ILIKE $1`,
+            zip_code,imageurl, num_of_places, available FROM kitas WHERE zip_code ILIKE $1`,
             [val + "%"]
         )
         .then(({ rows }) => {
@@ -195,5 +197,16 @@ exports.upsertApplication = function(parent_id, applInfo) {
             console.log(
                 "upserting into applications, I hope you will work, please"
             );
+        });
+};
+
+exports.decrementAvailableCount = function(id) {
+    return db
+        .query(
+            `UPDATE kitas SET available=available-1 WHERE id=$1 RETURNING available`,
+            [id]
+        )
+        .then(({ rows }) => {
+            console.log("applications insides", rows[0]);
         });
 };
