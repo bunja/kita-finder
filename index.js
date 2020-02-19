@@ -162,7 +162,7 @@ app.post("/api/update/kita", (req, res) => {
 });
 
 app.post("/api/find/kita", function(req, res) {
-    db.getMatchingKitas(req.body.val)
+    db.getMatchingKitas(req.body.val, req.session.parentId)
         .then(rows => {
             console.log("rows====> /search", rows);
             res.json({ rows: rows });
@@ -199,7 +199,7 @@ app.post("/api/application/:id", (req, res) => {
     db.upsertApplication(parentId, applicationInfo)
         .then(() => {
             db.decrementAvailableCount(kitaId);
-
+            db.insertKitaParentPair(parentId, kitaId);
             db.returnKitaInfo(kitaId).then(kitaContactInfo => {
                 // send email
                 const email = kitaContactInfo.email;

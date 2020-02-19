@@ -30,42 +30,60 @@ export default function Kita() {
                             <p className="kitaname">{kita.kitaname}</p>
                         </div>
                         <div className="address">
-                            Address:
+                            <span>Address:</span>
                             <p>
-                                Zip:{kita.zip_code}
+                                <span>Zip:</span>
+                                {kita.zip_code}
                                 <br />
-                                City:{kita.city}
+                                <span>City:</span>
+                                {kita.city}
                                 <br />
-                                Street:{kita.street_hous}
+                                <span>Street:</span>
+                                {kita.street_hous}
                                 <br />
                             </p>
                         </div>
                         <div className="contact-info">
                             <p>
-                                Phone: {kita.phone_number}
+                                <span>Phone:</span> {kita.phone_number}
                                 <br />
-                                email: {kita.email}
+                                <span>Email:</span> {kita.email}
                             </p>
                         </div>
                     </div>
                 </div>
                 <div className=" sec">
                     <div className="desc">
-                        Some information:
-                        <p>{kita.description}</p>
+                        <span>
+                            Some information:
+                            <p>{kita.description}</p>
+                        </span>
                     </div>
                     <div className="time-of-work">
                         {" "}
-                        Open: {kita.time_of_work}{" "}
+                        <span>Open:</span> {kita.time_of_work}{" "}
                     </div>
-                    <div className="age"> Age of kids: {kita.age}</div>
-                    <div className="website"> www.zandec.com</div>
+                    <div className="age">
+                        <span> Age of kids:</span> {kita.age}
+                    </div>
+                    <div className="website">
+                        {" "}
+                        <span>www.zandec.com</span>
+                    </div>
                 </div>
 
                 <div className=" ter">
-                    <div className="application">Aplication:</div>
-                    <div className="places">Places:{kita.num_of_places}</div>
-                    <div className="available">Available:{kita.available}</div>
+                    <div className="application-name">
+                        <span>Aplication:</span>
+                    </div>
+                    <div className="places">
+                        <span>Places:</span>
+                        {kita.num_of_places}
+                    </div>
+                    <div className="available">
+                        <span>Available:</span>
+                        {kita.available}
+                    </div>
                 </div>
             </div>
         </div>

@@ -29,31 +29,21 @@ export default function FindKita() {
             ignore = true;
         };
     }, [val]);
-
-    console.log("KiTaS", kitas);
+    let history = val;
+    console.log("history", history);
 
     return (
         <div>
             <div>{kitas.available}</div>
             <div className="form-element mb-10">
-                <p>Enter zip_code</p>
-                <input onChange={onChange} />
+                <p>Enter zip code:</p>
+                <input onChange={onChange} defaultValue={history} />
             </div>
             <div>
                 {kitas.map(kita => {
                     return (
                         <div key={kita.id} className="kita">
-                            <KitaInfo
-                                id={kita.id}
-                                kita={kita.kitaname}
-                                phone={kita.phone_number}
-                                email={kita.email}
-                                zip={kita.zip_code}
-                                street={kita.street_hous}
-                                time={kita.time_of_work}
-                                places={kita.num_of_places}
-                                available={kita.available}
-                            />
+                            <KitaInfo kita={kita} />
                         </div>
                     );
                 })}

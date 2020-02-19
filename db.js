@@ -113,20 +113,26 @@ exports.updateKitaInfo = function(id, info) {
         });
 };
 
-exports.getMatchingKitas = function(val) {
+exports.getMatchingKitas = function(val, parentId) {
     console.log("val", val);
-    return db
-        .query(
-            `SELECT id, kitaname,email,time_of_work,street_hous,
-            zip_code,imageurl, num_of_places, available FROM kitas WHERE zip_code ILIKE $1`,
-            [val + "%"]
-        )
-        .then(({ rows }) => {
-            console.log("__________________________");
-            console.log("rows whatever db.js", rows);
-            console.log("__________________________");
-            return rows;
-        });
+    const query = `SELECT
+            k.id, k.kitaname, k.email, k.time_of_work, k.street_hous,
+            k.zip_code, k.imageurl, k.num_of_places, k.available,
+            not (kp.parent_id is null) applied
+        FROM kitas k
+        LEFT JOIN (select * from kitaparent where parent_id=$2) kp
+        ON k.id = kp.kita_id
+        WHERE zip_code ILIKE $1
+    `;
+
+    //select k.id, k.kitaname, not (kp.parent_id is null) applied from kitas k left join (select * from kitaparent where parent_id=1) kp on k.id=kp.kita_id
+
+    return db.query(query, [val + "%", parentId]).then(({ rows }) => {
+        console.log("__________________________");
+        console.log("rows whatever db.js", rows);
+        console.log("__________________________");
+        return rows;
+    });
 };
 // берет инфо для заявления только из таблицы аппликейшн
 // exports.getApplication = function(parent_id) {
@@ -209,4 +215,11 @@ exports.decrementAvailableCount = function(id) {
         .then(({ rows }) => {
             console.log("applications insides", rows[0]);
         });
+};
+
+exports.insertKitaParentPair = function(parent_id, kita_id) {
+    return db.query(
+        `INSERT INTO kitaparent (parent_id, kita_id) VALUES ($1, $2)`,
+        [parent_id, kita_id]
+    );
 };

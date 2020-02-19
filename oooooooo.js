@@ -6,45 +6,131 @@ import { useParams } from "react-router-dom";
 
 export default function Kita() {
     return (
-        <div className="kita-profile">
-            <div className="content">
-                <div className="post main">
+        <div className="kita-profile ">
+            <div className="content post">
+                <div className=" main">
                     <div className="preview">
-                        <img className="kita-pic" src="./public/logo.png" />
+                        <img className="kita-pic" src="/logo.png" />
                     </div>
                     <div className="main-info">
                         <div className="name">
-                            <Link to={`/kita/${props.id}`} className="nav-link">
-                                <p>{props.kitaname}</p>
-                            </Link>
+                            <p className="kitaname">
+                                <input
+                                    name="kitaname"
+                                    defaultValue={kita.kitaname}
+                                    onChange={e => handleChange(e)}
+                                />
+                            </p>
+                        </div>
+                        <div className="address">
+                            Address:
                             <p>
-                                Phone: {props.phone_number}
+                                Zip:
+                                <input
+                                    name="zip_code"
+                                    defaultValue={kita.zip_code}
+                                    onChange={e => handleChange(e)}
+                                />
                                 <br />
-                                email: {props.email}
-                                Address:
-                                <p>
-                                    Zip:{props.zip}
-                                    <br />
-                                    Street:{props.street}
-                                    <br />
-                                </p>
+                                City:
+                                <input
+                                    name="city"
+                                    defaultValue={kita.city}
+                                    onChange={e => handleChange(e)}
+                                />
+                                <br />
+                                Street:{kita.street_hous}
+                                <br />
+                            </p>
+                        </div>
+                        <div className="contact-info">
+                            <p>
+                                Phone:{" "}
+                                <input
+                                    name="phone_number"
+                                    defaultValue={kita.phone_number}
+                                    onChange={e => handleChange(e)}
+                                />
+                                <br />
+                                email:{" "}
+                                <input
+                                    name="email"
+                                    defaultValue={kita.email}
+                                    onChange={e => handleChange(e)}
+                                />
                             </p>
                         </div>
                     </div>
-                    <div className="some-info">
-                        <div className="time-of-work">Open: {props.time}</div>
-                        <div className="age"> Age of kids: {props.age}</div>
-                        <div className="website"> www.zandec.com</div>
+                </div>
+                <div className=" sec">
+                    <div className="desc">
+                        Some information:
+                        <p>
+                            <textarea
+                                name="description"
+                                defaultValue={kita.description}
+                                onChange={e => handleChange(e)}
+                            />
+                        </p>
                     </div>
-                    <div className="application">
-                        Aplication:
-                        <div className="places">Places:{props.places}</div>
-                        <div className="available">
-                            Available:{props.available}
-                        </div>
-                        <div className="appl-btn">
-                            <Link to={"/application/" + props.id}>Apply</Link>
-                        </div>
+                    <div className="time-of-work">
+                        {" "}
+                        Open:{" "}
+                        <input
+                            name="time_of_work"
+                            defaultValue={kita.time_of_work}
+                            onChange={e => handleChange(e)}
+                        />{" "}
+                    </div>
+                    <div className="age">
+                        {" "}
+                        Age of kids:{" "}
+                        <input
+                            name="age"
+                            defaultValue={kita.age}
+                            onChange={e => handleChange(e)}
+                        />
+                    </div>
+                    <div className="website">
+                        {" "}
+                        www.zandec.com
+                        <input
+                            name="web_site"
+                            defaultValue={kita.web_site}
+                            onChange={e => handleChange(e)}
+                        />
+                    </div>
+                </div>
+
+                <div className=" ter">
+                    <div className="application">Aplication:</div>
+                    <div className="places">
+                        Places:
+                        <input
+                            name="num_of_places"
+                            defaultValue={kita.num_of_places}
+                            onChange={e => handleChange(e)}
+                        />
+                    </div>
+                    <div className="available">
+                        Available:
+                        <input
+                            name="available"
+                            defaultValue={kita.available}
+                            onChange={e => handleChange(e)}
+                        />
+                    </div>
+                    <div className="kita-save">
+                        <a
+                            href="#"
+                            onClick={e => {
+                                handleSave();
+                                setEditMode(false);
+                                dispatch(updateKitaInfo(values));
+                            }}
+                        >
+                            Save
+                        </a>
                     </div>
                 </div>
             </div>
