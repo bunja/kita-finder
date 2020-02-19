@@ -11,6 +11,11 @@ export default function reducer(state = {}, action) {
         newState = { ...state, kita: action.kita.data };
     }
 
+    if (action.type == "RECEIVE_OTHER_KITA_INFO") {
+        console.log("REDUCE TO ASHES KITA", action);
+        newState = { ...state, otherkita: action.otherkita.data };
+    }
+
     if (action.type == "UPDATE_KITA_INFO") {
         console.log("UPDATE TO ASHES KITA", action);
         newState = { ...state, kita: { ...state.kita, ...action.kita } };

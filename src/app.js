@@ -5,6 +5,7 @@ import Parent from "./parent";
 import Kita from "./kita";
 import FindKita from "./findKita";
 import Application from "./application";
+import OtherKita from "./otherKita";
 
 export default function App() {
     return (
@@ -29,6 +30,7 @@ export default function App() {
                 <Route exact path="/kita" component={Kita} />
                 <Route exact path="/find/kita" component={FindKita} />
                 <Route exact path="/application/:id" component={Application} />
+                <Route exact path="/kita/:id" component={OtherKita} />
             </BrowserRouter>
         </div>
     );

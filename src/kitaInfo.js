@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Application from "./application";
 
 export default function KitaInfo(props) {
@@ -10,8 +10,9 @@ export default function KitaInfo(props) {
             </div>
             <div className="kita-contact">
                 <Link to={`/kita/${props.id}`} className="nav-link">
-                    <p>{props.kitaname}</p>
+                    LINK
                 </Link>
+                <p>{props.kitaname}</p>
 
                 <p>Email{props.email}</p>
                 <p>

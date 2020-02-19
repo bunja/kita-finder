@@ -37,8 +37,8 @@ export default function Application(props) {
     }
 
     return (
-        <div className="container-application">
-            <div className="application" action="" method="post">
+        <div className="container-form">
+            <div className="form" action="" method="post">
                 <h3>Application for {kita.kitaname}</h3>
 
                 <fieldset>

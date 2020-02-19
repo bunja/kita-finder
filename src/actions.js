@@ -20,6 +20,16 @@ export async function receiveKitaInfo() {
     };
 }
 
+export async function receiveOtherKitaInfo() {
+    const { data } = await axios.get("/api/kita" + id);
+    console.log("data from /api/kita", data);
+    console.log("receiveKitaInfo action is in action");
+    return {
+        type: "RECEIVE_OTHER_KITA_INFO",
+        otherkita: data
+    };
+}
+
 export async function updateKitaInfo(data) {
     //console.log("data from /api/kita", data);
     console.log("updateKitaInfo action is in action", data);

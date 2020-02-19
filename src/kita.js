@@ -36,27 +36,27 @@ export default function Kita() {
     return (
         <div>
             {!editMode && (
-                <div className="container-form">
-                    <div className="kita-side">
-                        <div className="kita main-info">
+                <div className="container">
+                    <div className="form">
+                        <div className="kita-side ">
                             <div className="pic">
                                 <img src="/logo.png" />
                             </div>
-                            <div className="kita-info">
+                            <div className="kita-info ">
                                 <h1>Name:{kita.kitaname}</h1>
                                 <p>Number of places:{kita.num_of_places}</p>
                                 <p>Time of work:{kita.time_of_work}</p>
                                 <p>Age of kids:{kita.age}</p>
                             </div>
                         </div>
-                        <div className="desc kita">
+                        <div className="desc kita ">
                             <p>Some info:{kita.description}</p>
                         </div>
-                        <div className="kita-apply">
+                        <div className="kita-apply ">
                             Places available: {kita.available}
                         </div>
                     </div>
-                    <div className="contact-side">
+                    <div className="contact-side ">
                         <h1>ADDRESS:</h1>
                         <p>
                             Zip:{kita.zip_code}
@@ -67,7 +67,7 @@ export default function Kita() {
                         <p>email:{kita.email}</p>
                         <p>web-site:{kita.web_site}</p>
                     </div>
-                    <div className="kita-edit">
+                    <div className="kita-edit ">
                         <a href="#" onClick={e => editClick()}>
                             Edit
                         </a>
@@ -77,7 +77,7 @@ export default function Kita() {
 
             {editMode && (
                 <div className="container-form">
-                    <div className="kita-side">
+                    <div className="kita-side form">
                         <div className="kita main-info">
                             <div className="pic">
                                 <img src="/logo.png" />

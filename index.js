@@ -135,6 +135,14 @@ app.get("/api/kita", function(req, res) {
     });
 });
 
+app.get("/api/kita/:id", function(req, res) {
+    console.log("req.params id", req.params.id);
+    db.returnKitaInfo(req.params.id).then(kita => {
+        console.log("kita info index.js", kita);
+        res.json({ data: kita });
+    });
+});
+
 app.post("/api/update/kita", (req, res) => {
     console.log("/api/update/kita", req.body);
 
