@@ -19,11 +19,11 @@ export default function Kita() {
     }
 
     return (
-        <div className="kita-profile">
-            <div className="content">
-                <div className="post main">
+        <div className="kita-profile ">
+            <div className="content post">
+                <div className=" main">
                     <div className="preview">
-                        <img className="kita-pic" src="./public/logo.png" />
+                        <img className="kita-pic" src="/logo.png" />
                     </div>
                     <div className="main-info">
                         <div className="name">
@@ -49,7 +49,7 @@ export default function Kita() {
                         </div>
                     </div>
                 </div>
-                <div className="post sec">
+                <div className=" sec">
                     <div className="desc">
                         Some information:
                         <p>{kita.description}</p>
@@ -62,7 +62,7 @@ export default function Kita() {
                     <div className="website"> www.zandec.com</div>
                 </div>
 
-                <div className="post ter">
+                <div className=" ter">
                     <div className="application">Aplication:</div>
                     <div className="places">Places:{kita.num_of_places}</div>
                     <div className="available">Available:{kita.available}</div>
