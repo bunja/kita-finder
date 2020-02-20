@@ -41,22 +41,24 @@ export default function FindKita(props) {
         <div className="kita-profile findkita">
             {isParent && <img src="/parent.png" className="circular--square" />}
             {!isParent && <img src="/kita.png" className="circular--square" />}
-            <div className="form-element">
-                <p>Enter zip code:</p>
-                <input
-                    className="kita-search"
-                    onChange={onChange}
-                    defaultValue={val}
-                />
-            </div>
+            <div className="findkita-container">
+                <div className="form-element">
+                    <p>Enter zip code:</p>
+                    <input
+                        className="kita-search"
+                        onChange={onChange}
+                        defaultValue={val}
+                    />
+                </div>
 
-            {kitas.map(kita => {
-                return (
-                    <div key={kita.id} className="kita">
-                        <KitaInfo kita={kita} isParent={isParent} />
-                    </div>
-                );
-            })}
+                {kitas.map(kita => {
+                    return (
+                        <div key={kita.id} className="kita">
+                            <KitaInfo kita={kita} isParent={isParent} />
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 }

@@ -19,10 +19,10 @@ export default function Parent() {
         return <div>NOTHING</div>;
     }
     return (
-        <div className="kita-profile">
-            <div className="post main kitainfo">
+        <div className="parent-profile">
+            <div className="post main kitainfo parent-info">
                 <img src="/parent.png" className="circular--square" />
-                <div className="pic-info">
+                <div className="parent-pic-info">
                     <img className="kita-pic" src="/logo.png" />
                 </div>
 

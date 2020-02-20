@@ -111,16 +111,6 @@ export default function Application(props) {
                                     required
                                 />
                             </fieldset>
-                            <fieldset>
-                                <textarea
-                                    placeholder="Type your message here...."
-                                    defaultValue={application.notes}
-                                    onChange={e => handleChange(e)}
-                                    name="notes"
-                                    tabIndex="11"
-                                    required
-                                ></textarea>
-                            </fieldset>
                         </div>
                         <div className="column">
                             <fieldset>
@@ -190,30 +180,44 @@ export default function Application(props) {
                                     required
                                 />
                             </fieldset>
-                            <fieldset>
-                                <button
-                                    name="submit"
-                                    type="submit"
-                                    className="contact-submit"
-                                    onClick={e => {
-                                        handleSave();
-                                        dispatch(updateApplication(values));
-                                        setIsVisible(true);
-                                        console.log("AAAA?");
-                                    }}
-                                >
-                                    Send Application to {kita.kitaname}
-                                </button>
-                                {isVisible && (
-                                    <Modal
-                                        closeModal={() => {
-                                            setIsVisible(false);
-                                            props.history.push("/find/kita");
-                                        }}
-                                    />
-                                )}
-                            </fieldset>
                         </div>
+                    </div>
+
+                    <div className="pain-no-gain">
+                        <fieldset>
+                            <textarea
+                                placeholder="Type your message here...."
+                                defaultValue={application.notes}
+                                onChange={e => handleChange(e)}
+                                name="notes"
+                                tabIndex="11"
+                                required
+                            ></textarea>
+                        </fieldset>
+
+                        <fieldset>
+                            <button
+                                name="submit"
+                                type="submit"
+                                className="contact-submit"
+                                onClick={e => {
+                                    handleSave();
+                                    dispatch(updateApplication(values));
+                                    setIsVisible(true);
+                                    console.log("AAAA?");
+                                }}
+                            >
+                                Send Application to {kita.kitaname}
+                            </button>
+                            {isVisible && (
+                                <Modal
+                                    closeModal={() => {
+                                        setIsVisible(false);
+                                        props.history.push("/find/kita");
+                                    }}
+                                />
+                            )}
+                        </fieldset>
                     </div>
                 </div>
             </div>
