@@ -8,6 +8,9 @@ export default function Kita() {
     const dispatch = useDispatch();
     const kita = useSelector(state => state && state.otherkita);
     console.log("kita kitaComponent", kita);
+    const isParent = useSelector(state => state && state.isParent);
+    // console.log("kita kitaComponent", kita);
+    console.log("!!!! OTHER KITA??? IS THAT PARENT==>", isParent);
     const { id } = useParams();
     console.log("id KOKKKKKK", id);
     useEffect(() => {

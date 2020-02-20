@@ -56,7 +56,8 @@ app.post("/api/register/parent", function(req, res) {
             )
                 .then(id => {
                     req.session.parentId = id;
-                    res.json({ success: true });
+                    req.session.isParent = true;
+                    res.json({ success: true, isParent: req.session.isParent });
                 })
                 .catch(error => {
                     console.log("err in db", error);
@@ -75,7 +76,8 @@ app.post("/api/register/kita", function(req, res) {
             db.addKitas(req.body.kitaname, req.body.email, hashPass)
                 .then(id => {
                     req.session.kitaId = id;
-                    res.json({ success: true });
+                    req.session.isParent = false;
+                    res.json({ success: true, isParent: req.session.isParent });
                 })
                 .catch(error => {
                     console.log("err in db", error);
@@ -91,7 +93,8 @@ app.post("/api/login/parent", (req, res) => {
             if (bcrypt.compare(req.body.password, hashPass.password)) {
                 console.log("password is correct");
                 req.session.parentId = hashPass.id;
-                res.json({ success: true });
+                req.session.isParent = true;
+                res.json({ success: true, isParent: req.session.isParent });
             } else {
                 res.json({ success: false });
             }
@@ -108,7 +111,8 @@ app.post("/api/login/kita", (req, res) => {
             if (bcrypt.compare(req.body.password, hashPass.password)) {
                 console.log("password is correct");
                 req.session.kitaId = hashPass.id;
-                res.json({ success: true });
+                req.session.isParent = false;
+                res.json({ success: true, isParent: req.session.isParent });
             } else {
                 res.json({ success: false });
             }
@@ -123,7 +127,7 @@ app.get("/api/parent", function(req, res) {
     console.log("parent id", req.session.parentId);
     db.returnParentInfo(req.session.parentId).then(parent => {
         console.log("Parent info index.js", parent);
-        res.json({ data: parent });
+        res.json({ data: parent, isParent: req.session.isParent });
     });
 });
 
@@ -131,15 +135,15 @@ app.get("/api/kita", function(req, res) {
     console.log("kita id", req.session.kitaId);
     db.returnKitaInfo(req.session.kitaId).then(kita => {
         console.log("kita info index.js", kita);
-        res.json({ data: kita });
+        res.json({ data: kita, isParent: req.session.isParent });
     });
 });
 
 app.get("/api/kita/:id", function(req, res) {
-    console.log("req.params id", req.params.id);
+    console.log("req.session", req.session);
     db.returnKitaInfo(req.params.id).then(kita => {
         console.log("kita info index.js", kita);
-        res.json({ data: kita });
+        res.json({ data: kita, isParent: req.session.isParent });
     });
 });
 
@@ -151,7 +155,7 @@ app.post("/api/update/kita", (req, res) => {
 
     db.updateKitaInfo(kitaId, kitaInfo)
         .then(() => {
-            res.json({ success: true });
+            res.json({ success: true, isParent: req.session.isParent });
         })
         .catch(err => {
             console.error("/api/update/kita", err);
@@ -165,7 +169,7 @@ app.post("/api/find/kita", function(req, res) {
     db.getMatchingKitas(req.body.val, req.session.parentId)
         .then(rows => {
             console.log("rows====> /search", rows);
-            res.json({ rows: rows });
+            res.json({ rows: rows, isParent: req.session.isParent });
         })
         .catch(err => {
             console.error("/api/find/kita", err);
@@ -184,7 +188,11 @@ app.get("/api/application/:id", function(req, res) {
             application = {};
         }
         db.returnKitaInfo(req.params.id).then(kitaContactInfo => {
-            res.json({ data: application, contact: kitaContactInfo });
+            res.json({
+                data: application,
+                contact: kitaContactInfo,
+                isParent: req.session.isParent
+            });
         });
     });
 });
@@ -205,11 +213,11 @@ app.post("/api/application/:id", (req, res) => {
                 const email = kitaContactInfo.email;
                 const message = JSON.stringify(applicationInfo);
                 ses.sendEmail(email, message, "Application");
-                res.json({ success: true });
+                res.json({ success: true, isParent: req.session.isParent });
             });
         })
         .catch(err => {
-            console.error("/api/update/application", err);
+            console.error("/api/application/:id", err);
             res.json({
                 success: false
             });

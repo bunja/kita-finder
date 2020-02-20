@@ -14,7 +14,9 @@ export default function Kita() {
 
     const dispatch = useDispatch();
     const kita = useSelector(state => state && state.kita);
+    const isParent = useSelector(state => state && state.isParent);
     console.log("kita kitaComponent", kita);
+    console.log("!!!! WHAT IS THAT??? IS THAT PARENT==>", isParent);
 
     const [values, handleChange] = useStatefulFields();
     console.log("kita values", values);

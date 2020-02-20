@@ -2,11 +2,12 @@ import axios from "./axios";
 
 export async function receiveParentInfo() {
     const { data } = await axios.get("/api/parent");
-    console.log("data from /api/parent", data);
+    console.log("data from /api/parent", data.isParent);
     console.log("receiveParentInfo action is in action");
     return {
         type: "RECEIVE_PARENT_INFO",
-        parent: data
+        parent: data.data,
+        isParent: data.isParent
     };
 }
 
@@ -16,17 +17,19 @@ export async function receiveKitaInfo() {
     console.log("receiveKitaInfo action is in action");
     return {
         type: "RECEIVE_KITA_INFO",
-        kita: data
+        kita: data.data,
+        isParent: data.isParent
     };
 }
 
 export async function receiveOtherKitaInfo(id) {
     const { data } = await axios.get("/api/kita/" + id);
-    console.log("data from /api/kita/", data);
+    console.log("data from /api/kita/ OTHER KITA", data);
     console.log("receiveKitaInfo action is in action");
     return {
         type: "RECEIVE_OTHER_KITA_INFO",
-        otherkita: data
+        otherkita: data.data,
+        isParent: data.isParent
     };
 }
 

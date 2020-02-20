@@ -3,17 +3,25 @@ export default function reducer(state = {}, action) {
 
     if (action.type == "RECEIVE_PARENT_INFO") {
         console.log("REDUCE TO ASHES PARENT", action);
-        newState = { ...state, parent: action.parent.data };
+        newState = {
+            ...state,
+            parent: action.parent,
+            isParent: action.isParent
+        };
     }
 
     if (action.type == "RECEIVE_KITA_INFO") {
         console.log("REDUCE TO ASHES KITA", action);
-        newState = { ...state, kita: action.kita.data };
+        newState = { ...state, kita: action.kita, isParent: action.isParent };
     }
 
     if (action.type == "RECEIVE_OTHER_KITA_INFO") {
         console.log("REDUCE TO OTHER ASHES KITA", action);
-        newState = { ...state, otherkita: action.otherkita.data };
+        newState = {
+            ...state,
+            otherkita: action.otherkita,
+            isParent: action.isParent
+        };
     }
 
     if (action.type == "UPDATE_KITA_INFO") {

@@ -23,7 +23,9 @@ export default function KitaInfo(props) {
                             <br />
                             email: {kita.email}
                             <br />
-                            Address:&nbsp;{kita.zip}
+                            Address:
+                            <br />
+                            Zip code:{kita.zip}
                             <br />
                             Street:{kita.street}
                             <br />

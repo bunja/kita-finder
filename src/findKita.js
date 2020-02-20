@@ -3,20 +3,25 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import KitaInfo from "./kitaInfo";
 import useStateWithLocalStorage from "../hooks/useStateWithLocalStorage";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function FindKita() {
+export default function FindKita(props) {
+    const dispatch = useDispatch();
     const [val, setVal] = useStateWithLocalStorage("myValueInLocalStorage");
 
     // const [val, setVal] = useState("");
     const [kitas, setKitas] = useState([]);
     // const [value, setValue] = useStateWithLocalStorage("myValueInLocalStorage");
+    const isParent = useSelector(state => state && state.isParent);
+    // console.log("kita kitaComponent", kita);
+    console.log("!!!! FIND KITA??? is that parent==>", isParent);
 
     const onChange = ({ target }) => {
         setVal(target.value);
     };
 
     useEffect(() => {
-        console.log("val useEffect", val);
+        //console.log("val useEffect", val);
 
         if (val == "") {
             return;
@@ -25,7 +30,7 @@ export default function FindKita() {
         axios.post("/api/find/kita", { val: val }).then(({ data }) => {
             if (!ignore) {
                 setKitas(data.rows);
-                console.log("matching kitas inside then", kitas);
+                //console.log("matching kitas inside then", kitas);
             }
         });
 
@@ -33,8 +38,6 @@ export default function FindKita() {
             ignore = true;
         };
     }, [val]);
-    let history = val;
-    console.log("history", history);
 
     return (
         <div>
