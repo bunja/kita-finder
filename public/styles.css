@@ -54,6 +54,10 @@ body {
     color: white;
 }
 
+.welcome a {
+    color: white;
+}
+
 .dark-overlay {
     position: relative;
     top: 0;
@@ -515,4 +519,8 @@ button {
 
 .pain-no-gain textarea {
     width: 80%;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
 }

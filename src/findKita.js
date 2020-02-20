@@ -6,7 +6,7 @@ import useStateWithLocalStorage from "../hooks/useStateWithLocalStorage";
 
 export default function FindKita(props) {
     // const [val, setVal] = useStateWithLocalStorage("myValueInLocalStorage");
-    const [isParent, setIsParent] = useState(false);
+    const [isParent, setIsParent] = useState(true);
     const [val, setVal] = useState("");
     const [kitas, setKitas] = useState([]);
     // const [value, setValue] = useStateWithLocalStorage("myValueInLocalStorage");

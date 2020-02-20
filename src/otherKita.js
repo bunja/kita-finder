@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { receiveOtherKitaInfo } from "./actions";
 import { useParams } from "react-router-dom";
 import { CircleItem } from "./circleItem";
+import { Link } from "react-router-dom";
 
 export default function Kita() {
     const dispatch = useDispatch();
@@ -23,72 +24,58 @@ export default function Kita() {
     }
 
     return (
-        <div className="kita-profile ">
+        <div className="kita-profile findkita">
             {isParent && <img src="/parent.png" className="circular--square" />}
             {!isParent && <img src="/kita.png" className="circular--square" />}
-            <div className="content post">
-                <div className=" main">
-                    <div className="preview">
-                        <img className="kita-pic" src="/logo.png" />
-                    </div>
-                    <div className="main-info">
-                        <div className="name">
-                            <p className="kitaname">{kita.kitaname}</p>
+            <div className="findkita-container">
+                <div className="wrap">
+                    <div className="post main">
+                        <div className="pic-info">
+                            <img className="kita-pic" src="/logo.png" />
                         </div>
-                        <div className="address">
-                            <span>Address:</span>
-                            <p>
-                                <span>Zip:</span>
-                                {kita.zip_code}
-                                <br />
-                                <span>City:</span>
-                                {kita.city}
-                                <br />
-                                <span>Street:</span>
-                                {kita.street_hous}
-                                <br />
-                            </p>
+                        <div className="kita-info mb-10">
+                            <div className="kita-info-row">
+                                <span className="title">{kita.kitaname}</span>
+                                <a href={"mailto:" + kita.email}>✉️</a>&nbsp;
+                                <a href={kita.website}>🌍</a>
+                            </div>
+                            <div className="kita-info-row">
+                                Address: {kita.street_hous}, {kita.zip_code}
+                            </div>
+                            <div className="kita-info-row">
+                                Open: {kita.time_of_work}, Age: {kita.age}
+                            </div>
+                            <div className="kita-info-row">
+                                Information: {kita.num_of_places} places,{" "}
+                                {kita.available} available
+                            </div>
+                            <div className="kita-info-row">
+                                <p>{kita.description}</p>
+                            </div>
+                            <div className="kita-info-row">
+                                {isParent &&
+                                    kita.available > 0 &&
+                                    !kita.applied && (
+                                        <div className="appl-btn">
+                                            <Link
+                                                to={"/application/" + kita.id}
+                                            >
+                                                Apply
+                                            </Link>
+                                        </div>
+                                    )}
+                                {isParent &&
+                                    kita.available == 0 &&
+                                    !kita.applied && (
+                                        <div className="error">
+                                            Currently no places available
+                                        </div>
+                                    )}
+                                {isParent && kita.applied && (
+                                    <div className="error">Applied ✔️</div>
+                                )}
+                            </div>
                         </div>
-                        <div className="contact-info">
-                            <p>
-                                <span>Phone:</span> {kita.phone_number}
-                                <br />
-                                <span>Email:</span> {kita.email}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className=" sec">
-                    <div className="desc">
-                        <span>
-                            Some information:
-                            <p>{kita.description}</p>
-                        </span>
-                    </div>
-                    <div className="time-of-work">
-                        {" "}
-                        <span>Open:</span> {kita.time_of_work}{" "}
-                    </div>
-                    <div className="age">
-                        <span> Age of kids:</span> {kita.age}
-                    </div>
-                    <div className="website">
-                        {" "}
-                        <span>www.zandec.com</span>
-                    </div>
-                </div>
-
-                <div className=" ter">
-                    <div className="application-name">
-                        <span>Aplication:</span>
-                    </div>
-                    <div className="places">
-                        <span>Places:</span>
-                        {kita.num_of_places}
-                    </div>
-                    <div className="available">
-                        <span>Available:</span>
-                        {kita.available}
                     </div>
                 </div>
             </div>
