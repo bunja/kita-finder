@@ -6,13 +6,12 @@ import useStateWithLocalStorage from "../hooks/useStateWithLocalStorage";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function FindKita(props) {
-    const dispatch = useDispatch();
     const [val, setVal] = useStateWithLocalStorage("myValueInLocalStorage");
-
+    const [isParent, setIsParent] = useState([]);
     // const [val, setVal] = useState("");
     const [kitas, setKitas] = useState([]);
     // const [value, setValue] = useStateWithLocalStorage("myValueInLocalStorage");
-    const isParent = useSelector(state => state && state.isParent);
+
     // console.log("kita kitaComponent", kita);
     console.log("!!!! FIND KITA??? is that parent==>", isParent);
 
@@ -27,10 +26,11 @@ export default function FindKita(props) {
             return;
         }
         let ignore = false;
-        axios.post("/api/find/kita", { val: val }).then(({ data }) => {
+        axios.post("/api/find/kita", { val: val }).then(res => {
             if (!ignore) {
-                setKitas(data.rows);
-                //console.log("matching kitas inside then", kitas);
+                setKitas(res.data.rows);
+                setIsParent(res.data.isParent);
+                console.log("НУ КАК ЖЕЖ ЗАЕБАЛ ЭТОТ ПРОЕКТ", res.data.isParent);
             }
         });
 
@@ -38,6 +38,8 @@ export default function FindKita(props) {
             ignore = true;
         };
     }, [val]);
+
+    console.log("НУ КАК ЖЕЖ ЗАЕБАЛ ЭТОТ ПРОЕКТ22", isParent);
 
     return (
         <div>

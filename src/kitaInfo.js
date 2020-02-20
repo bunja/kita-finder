@@ -4,11 +4,13 @@ import Application from "./application";
 
 export default function KitaInfo(props) {
     const kita = props.kita;
-    console.log("KitaInfo kita", kita);
+    //const isParent = props.isParent;
+    //console.log("A TUT CHTO", props.isParent);
 
     return (
         <div className="kita-profile">
             <div className="post main kitainfo">
+                <div>ЧТО ЭТО ЗА ХУЙНЯ ТУТ </div>
                 <div className="pic-info">
                     <Link to={`/kita/${kita.id}`} className="nav-link">
                         <img className="kita-pic" src="/logo.png" />
