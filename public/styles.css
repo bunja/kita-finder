@@ -524,3 +524,15 @@ button {
 .mb-10 {
     margin-bottom: 10px;
 }
+
+.w100px {
+    width: 100px;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.grey-input {
+    background: #eceff1;
+}
