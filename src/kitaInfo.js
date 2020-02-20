@@ -4,57 +4,53 @@ import Application from "./application";
 
 export default function KitaInfo(props) {
     const kita = props.kita;
-    //const isParent = props.isParent;
-    //console.log("A TUT CHTO", props.isParent);
+    const isParent = props.isParent;
+    console.log("A TUT CHTO", props);
 
     return (
-        <div className="kita-profile">
-            <div className="post main kitainfo">
-                <div>ЧТО ЭТО ЗА ХУЙНЯ ТУТ </div>
+        <div className="wrap">
+            <div className="post main">
                 <div className="pic-info">
                     <Link to={`/kita/${kita.id}`} className="nav-link">
                         <img className="kita-pic" src="/logo.png" />
                     </Link>
                 </div>
                 <div className="adr-info">
-                    <div className="name">
-                        <p>{kita.kita}</p>
-
-                        <p>
-                            Phone: {kita.phone_number}
-                            <br />
-                            email: {kita.email}
-                            <br />
-                            Address:
-                            <br />
-                            Zip code:{kita.zip}
-                            <br />
-                            Street:{kita.street}
-                            <br />
-                        </p>
-                    </div>
+                    <span className="title">{kita.kitaname}</span>
+                    <p>
+                        Email: {kita.email}
+                        <br />
+                        Adresse:
+                        {kita.zip_code} &nbsp;
+                        {kita.street_hous}
+                        <br />
+                    </p>
                 </div>
                 <div className="some-info">
                     Information:
-                    <div className="time-of-work">Open: {kita.time}</div>
+                    <div className="time-of-work">
+                        Open: {kita.time_of_work}
+                    </div>
                     <div className="age"> Age of kids: {kita.age}</div>
-                    <div className="website"> www.zandec.com</div>
+                    <div className="website">Web site:{kita.website}</div>
                 </div>
                 <div className="application">
                     Aplication:
-                    <div className="places">Places: {kita.places}</div>
+                    <div className="places">Places: {kita.num_of_places}</div>
                     <div className="available">Available: {kita.available}</div>
-                    {kita.available > 0 && !kita.applied && (
+                    {isParent && kita.available > 0 && !kita.applied && (
                         <div className="appl-btn">
                             <Link to={"/application/" + kita.id}>Apply</Link>
                         </div>
                     )}
-                    {kita.available == 0 && !kita.applied && (
+                    {isParent && kita.available == 0 && !kita.applied && (
                         <div className="error">
                             Currently no places available
                         </div>
                     )}
-                    {kita.applied && <div className="error">Applied ✔️</div>}
+                    {isParent && kita.applied && (
+                        <div className="error">Applied ✔️</div>
+                    )}
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { receiveOtherKitaInfo } from "./actions";
 import { useParams } from "react-router-dom";
+import { CircleItem } from "./circleItem";
 
 export default function Kita() {
     const dispatch = useDispatch();
@@ -23,6 +24,8 @@ export default function Kita() {
 
     return (
         <div className="kita-profile ">
+            {isParent && <img src="/parent.png" className="circular--square" />}
+            {!isParent && <img src="/kita.png" className="circular--square" />}
             <div className="content post">
                 <div className=" main">
                     <div className="preview">

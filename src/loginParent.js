@@ -13,7 +13,6 @@ export default function LoginParent() {
 
     return (
         <div>
-            <h3>Log in</h3>
             <div className="form">
                 {error && (
                     <div className="error">

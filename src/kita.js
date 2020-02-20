@@ -40,6 +40,7 @@ export default function Kita() {
             {!editMode && (
                 <div>
                     <div className="kita-profile ">
+                        <img src="/kita.png" className="circular--square" />
                         <div className="content post">
                             <div className=" main">
                                 <div className="preview">
@@ -106,6 +107,7 @@ export default function Kita() {
 
             {editMode && (
                 <div className="kita-profile ">
+                    <img src="/kita.png" className="circular--square" />
                     <div className="content post">
                         <div className=" main">
                             <div className="preview">

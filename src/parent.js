@@ -6,6 +6,7 @@ import {
     //     acceptFriendRequest,
     //     unfriend
 } from "./actions";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 export default function Parent() {
     const dispatch = useDispatch();
@@ -18,20 +19,22 @@ export default function Parent() {
         return <div>NOTHING</div>;
     }
     return (
-        <div className="user">
-            <div>
-                <div className="user-userpic-container">
-                    <img src="/logo.png" />
+        <div className="kita-profile">
+            <div className="post main kitainfo">
+                <img src="/parent.png" className="circular--square" />
+                <div className="pic-info">
+                    <img className="kita-pic" src="/logo.png" />
                 </div>
-            </div>
-            <div className="user-info">
-                <p className="user-name">
-                    First name:{parent.first}
-                    <br />
-                    Last name: {parent.last}
-                    <br />
-                    Email:&nbsp;{parent.email}
-                </p>
+
+                <div className="adr-info">
+                    <p>
+                        First name:{parent.first}
+                        <br />
+                        Last name: {parent.last}
+                        <br />
+                        Email:&nbsp;{parent.email}
+                    </p>
+                </div>
             </div>
         </div>
     );

@@ -6,30 +6,17 @@ import RegisterTab from "./registerTab";
 
 export default function Welcome() {
     return (
-        <div className="center-flex">
+        <div className="center-flex dark-overlay">
             <div className="container text-center">
                 <div className="logo">
                     <img className="logo-pic" src="/logo.png" />
-                </div>
-                <div className="welcome">
                     <h1>Kita-Finder</h1>
+                </div>
 
+                <div className="welcome">
                     <RegisterTab />
                 </div>
             </div>
         </div>
     );
 }
-
-// <div>
-//     <Route
-//         exact
-//         path="/register/parent"
-//         component={RegisterParent}
-//     />
-//     <Route
-//         exact
-//         path="/register/kita"
-//         component={RegisterKita}
-//     />
-// </div>
