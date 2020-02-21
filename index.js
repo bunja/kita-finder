@@ -6,6 +6,7 @@ const cookieSession = require("cookie-session");
 const bcrypt = require("./bcrypt");
 const csurf = require("csurf");
 const ses = require("./ses");
+const textGen = require("./generateText");
 app.use(compression());
 app.use(express.json());
 app.use(express.static("./public"));
@@ -211,7 +212,8 @@ app.post("/api/application/:id", (req, res) => {
             db.returnKitaInfo(kitaId).then(kitaContactInfo => {
                 // send email
                 const email = kitaContactInfo.email;
-                const message = JSON.stringify(applicationInfo);
+                // const message = JSON.stringify(applicationInfo);
+                const message = textGen.generateText(applicationInfo);
                 ses.sendEmail(email, message, "Application");
                 res.json({ success: true, isParent: req.session.isParent });
             });
